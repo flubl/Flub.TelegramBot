@@ -14,7 +14,7 @@ namespace Flub.TelegramBot
     /// Post the file using multipart/form-data in the usual way that files are uploaded via the browser. 10 MB max size for photos, 50 MB for other files.
     /// </summary>
     [JsonConverter(typeof(JsonInputFileConverter))]
-    public class InputFile
+    public class InputFile : IFile
     {
         /// <summary>
         /// Name of the file to be uploaded.
@@ -46,6 +46,8 @@ namespace Flub.TelegramBot
         /// </summary>
         [JsonIgnore]
         public bool IsFile => Stream is not null && !string.IsNullOrEmpty(Name);
+
+        string IFile.Id => FileId;
 
         /// <summary>
         /// Ensures that only one parameter is set. Throws an <see cref="TelegramBotException"/> otherwise.
