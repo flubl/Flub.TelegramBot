@@ -8,4 +8,9 @@
     <FrameworkReference Include="Microsoft.AspNetCore.App" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Flub.Utils" Version="1.0.1" />
+    <PackageReference Include="MimeKit" Version="2.15.1" />
+  </ItemGroup>
+
 </Project>
