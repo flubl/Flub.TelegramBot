@@ -17,20 +17,10 @@ namespace Flub.TelegramBot
     public class InputFile : IFile
     {
         /// <summary>
-        /// Name of the file to be uploaded.
+        /// The file to be uploaded.
         /// </summary>
         [JsonIgnore]
-        public string Name { get; set; }
-        /// <summary>
-        /// MIME type of the file to be uploaded.
-        /// </summary>
-        [JsonIgnore]
-        public string Type { get; set; }
-        /// <summary>
-        /// Readable stream of the file to be uploaded.
-        /// </summary>
-        [JsonIgnore]
-        public Stream Stream { get; set; }
+        public FileStream File { get; set; }
         /// <summary>
         /// HTTP url of the file to be send.
         /// </summary>
@@ -42,10 +32,10 @@ namespace Flub.TelegramBot
         [JsonIgnore]
         public string FileId { get; set; }
         /// <summary>
-        /// True, if the stream and name is set.
+        /// True, if <see cref="File"/> is set and is valid.
         /// </summary>
         [JsonIgnore]
-        public bool IsFile => Stream is not null && !string.IsNullOrEmpty(Name);
+        public bool IsFile => File?.Valid ?? false;
 
         string IFile.Id => FileId;
 
@@ -55,11 +45,11 @@ namespace Flub.TelegramBot
         public void EnsureSinglePropertyIsSet()
         {
             if (((IsFile ? 1 : 0) + (Url is null ? 0 : 1) + (FileId is null ? 0 : 1)) != 1)
-                throw new TelegramBotException("");
+                throw new TelegramBotException("the input file contains no or more than one properties");
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="InputFile"/> class from the specified file and sets name, type and stream.
+        /// Initializes a new instance of the <see cref="InputFile"/> class from the specified file and sets <see cref="File"/>.
         /// </summary>
         /// <param name="fileName">Path to the file to be uploaded.</param>
         /// <returns>Returns a new instance of the <see cref="InputFile"/></returns>
@@ -67,33 +57,36 @@ namespace Flub.TelegramBot
             FromFile(new FileInfo(fileName));
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="InputFile"/> class from the specified fileinfo and sets name, type and stream.
+        /// Initializes a new instance of the <see cref="InputFile"/> class from the specified fileinfo and sets <see cref="File"/>.
         /// </summary>
         /// <param name="fileName">Fileinfo of the file to be uploaded.</param>
         /// <returns>Returns a new instance of the <see cref="InputFile"/></returns>
         public static InputFile FromFile(FileInfo file) => new()
         {
-            Name = file.Name,
-            Stream = file.OpenRead(),
-            Type = MimeTypes.GetMimeType(file.Extension)
+            File = new FileStream
+            {
+                Name = file.Name,
+                Type = MimeTypes.GetMimeType(file.Extension),
+                Stream = file.OpenRead()
+            }
         };
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="InputFile"/> class with the id of the specified value.
+        /// Initializes a new instance of the <see cref="InputFile"/> class with the <see cref="FileId"/> of the specified value.
         /// </summary>
         /// <param name="fileName">The file id of the file to be send.</param>
         /// <returns>Returns a new instance of the <see cref="InputFile"/></returns>
         public static InputFile FromFileId(string fileId) => new() { FileId = fileId };
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="InputFile"/> class with the id of the specified file.
+        /// Initializes a new instance of the <see cref="InputFile"/> class with the <see cref="FileId"/> of the specified file.
         /// </summary>
         /// <param name="fileName">The file to be send.</param>
         /// <returns>Returns a new instance of the <see cref="InputFile"/></returns>
         public static InputFile FromFileId(IFile file) => new() { FileId = file?.Id };
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="InputFile"/> class with the specified url.
+        /// Initializes a new instance of the <see cref="InputFile"/> class with the <see cref="Url"/> of the specified url.
         /// </summary>
         /// <param name="fileName">The url of the to be send.</param>
         /// <returns>Returns a new instance of the <see cref="InputFile"/></returns>
@@ -113,10 +106,38 @@ namespace Flub.TelegramBot
             public override void Write(Utf8JsonWriter writer, InputFile value, JsonSerializerOptions options)
             {
                 value.EnsureSinglePropertyIsSet();
-                if (value.Stream is not null)
+                if (value.File is not null)
                     throw new NotSupportedException();
                 writer.WriteStringValue(value.FileId ?? value.Url.ToString());
             }
+        }
+
+        /// <summary>
+        /// Contains informations about a file to be uploaded.
+        /// </summary>
+        public class FileStream
+        {
+            /// <summary>
+            /// Name of the file to be uploaded.
+            /// </summary>
+            [JsonIgnore]
+            public string Name { get; set; }
+            /// <summary>
+            /// MIME type of the file to be uploaded.
+            /// </summary>
+            [JsonIgnore]
+            public string Type { get; set; }
+            /// <summary>
+            /// Readable stream of the file to be uploaded.
+            /// </summary>
+            [JsonIgnore]
+            public Stream Stream { get; set; }
+
+            /// <summary>
+            /// True, if the stream and name is set.
+            /// </summary>
+            [JsonIgnore]
+            public bool Valid => Stream is not null && !string.IsNullOrEmpty(Name);
         }
     }
 }

@@ -65,13 +65,13 @@ namespace Flub.TelegramBot
                     MultipartFormDataContent content = new();
                     foreach ((string name, object value) in method.GetProperties().Where(i => i.Value is not null))
                     {
-                        if (value is InputFile file)
+                        if (value is InputFile input)
                         {
-                            if (file.IsFile)
+                            if (input.IsFile)
                             {
-                                StreamContent stream = new(file.Stream);
-                                stream.Headers.ContentType = new MediaTypeHeaderValue(file.Type ?? MimeTypes.GetMimeType(file.Name));
-                                content.Add(stream, name, file.Name);
+                                StreamContent stream = new(input.File.Stream);
+                                stream.Headers.ContentType = new MediaTypeHeaderValue(input.File.Type ?? MimeTypes.GetMimeType(input.File.Name));
+                                content.Add(stream, name, input.File.Name);
                             }
                         }
                         else if (value is string s)
@@ -97,7 +97,7 @@ namespace Flub.TelegramBot
             catch (HttpRequestException exc)
             {
                 if (response != null)
-                    throw new TelegramBotRequestException(method, response, "", exc);
+                    throw new TelegramBotRequestException(method, response, "Request of method was not successful.", exc);
                 throw;
             }
         }
