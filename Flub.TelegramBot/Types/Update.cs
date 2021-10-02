@@ -42,18 +42,36 @@ namespace Flub.TelegramBot.Types
         [JsonPropertyName("edited_channel_post")]
         [UpdateType(UpdateType.EditedChannelPost)]
         public Message EditedChannelPost { get; set; }
-        /// <summary>
-        /// Optional. New incoming inline query.
-        /// </summary>
-        [JsonPropertyName("inline_query")]
-        [UpdateType(UpdateType.InlineQuery)]
-        public InlineQuery InlineQuery { get; set; }
+        ///// <summary>
+        ///// Optional. New incoming inline query.
+        ///// </summary>
+        //[JsonPropertyName("inline_query")]
+        //[UpdateType(UpdateType.InlineQuery)]
+        //public InlineQuery InlineQuery { get; set; }
+        ///// <summary>
+        ///// Optional. The result of an inline query that was chosen by a user and sent to their chat partner. Please see the documentation on the <see href="https://core.telegram.org/bots/inline#collecting-feedback">feedback collecting</see> for details on how to enable these updates for your bot.
+        ///// </summary>
+        //[JsonPropertyName("chosen_inline_result")]
+        //[UpdateType(UpdateType.ChosenInlineResult)]
+        //public ChosenInlineResult ChosenInlineResult { get; set; }
         /// <summary>
         /// Optional. New incoming callback query.
         /// </summary>
         [JsonPropertyName("callback_query")]
         [UpdateType(UpdateType.CallbackQuery)]
         public CallbackQuery CallbackQuery { get; set; }
+        ///// <summary>
+        ///// Optional. New incoming shipping query. Only for invoices with flexible price.
+        ///// </summary>
+        //[JsonPropertyName("shipping_query")]
+        //[UpdateType(UpdateType.ShippingQuery)]
+        //public ShippingQuery ShippingQuery { get; set; }
+        ///// <summary>
+        ///// Optional. New incoming pre-checkout query. Contains full information about checkout.
+        ///// </summary>
+        //[JsonPropertyName("pre_checkout_query")]
+        //[UpdateType(UpdateType.PreCheckoutQuery)]
+        //public PreCheckoutQuery PreCheckoutQuery { get; set; }
         /// <summary>
         /// Optional. New poll state. Bots receive only updates about stopped polls and polls, which are sent by the bot.
         /// </summary>

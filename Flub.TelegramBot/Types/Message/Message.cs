@@ -145,6 +145,11 @@ namespace Flub.TelegramBot.Types
         /// </summary>
         [JsonPropertyName("photo")]
         public PhotoSize[] Photo { get; set; }
+        ///// <summary>
+        ///// Optional. Message is a sticker, information about the sticker.
+        ///// </summary>
+        //[JsonPropertyName("sticker")]
+        //public Sticker Sticker { get; set; }
         /// <summary>
         /// Optional. Message is a video, information about the video.
         /// </summary>
@@ -260,11 +265,26 @@ namespace Flub.TelegramBot.Types
         /// </summary>
         [JsonPropertyName("pinned_message")]
         public Message PinnedMessage { get; set; }
+        ///// <summary>
+        ///// Optional. Message is an invoice for a payment, information about the invoice. More about payments ».
+        ///// </summary>
+        //[JsonPropertyName("invoice")]
+        //public Invoice Invoice { get; set; }
+        ///// <summary>
+        ///// Optional. Message is a service message about a successful payment, information about the payment. More about payments ».
+        ///// </summary>
+        //[JsonPropertyName("successful_payment")]
+        //public SuccessfulPayment SuccessfulPayment { get; set; }
         /// <summary>
         /// Optional. The domain name of the website on which the user has logged in. More about Telegram Login ».
         /// </summary>
         [JsonPropertyName("connected_website")]
         public string ConnectedWebsite { get; set; }
+        ///// <summary>
+        ///// Optional. Telegram Passport data.
+        ///// </summary>
+        //[JsonPropertyName("passport_data")]
+        //public PassportData PassportData { get; set; }
         /// <summary>
         /// Optional. Service message. A user in the chat triggered another user's proximity alert while sharing Live Location.
         /// </summary>
@@ -290,10 +310,10 @@ namespace Flub.TelegramBot.Types
         /// </summary>
         [JsonPropertyName("voice_chat_participants_invited")]
         public VoiceChatParticipantsInvited VoiceChatParticipantsInvited { get; set; }
-        /// <summary>
-        /// Optional. Inline keyboard attached to the message. login_url buttons are represented as ordinary url buttons.
-        /// </summary>
-        [JsonPropertyName("reply_markup")]
-        public InlineKeyboardMarkup ReplyMarkup { get; set; }
+        ///// <summary>
+        ///// Optional. Inline keyboard attached to the message. login_url buttons are represented as ordinary url buttons.
+        ///// </summary>
+        //[JsonPropertyName("reply_markup")]
+        //public InlineKeyboardMarkup ReplyMarkup { get; set; }
     }
 }
