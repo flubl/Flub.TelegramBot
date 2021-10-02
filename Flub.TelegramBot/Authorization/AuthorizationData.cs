@@ -9,7 +9,7 @@ namespace Flub.TelegramBot.Authorization
     /// Contains data about a user. The integrity can be verified with the <see cref="TelegramBot.ValidateAuthorizationData"/> method.
     /// See <see href="https://core.telegram.org/widgets/login">Telegram Login Widget</see> for more informations.
     /// </summary>
-    public class AuthorizationData
+    public class AuthorizationData : IUser
     {
         /// <summary>
         /// Date of the authentication data was created in unix time format.
@@ -65,6 +65,8 @@ namespace Flub.TelegramBot.Authorization
             .Where(p => p.GetCustomAttributes<AuthenticationFieldAttribute>().Any())
             .Select(p => p.GetCustomAttribute<JsonPropertyNameAttribute>() is JsonPropertyNameAttribute a && p.GetValue(this) is object value ? $"{a.Name}={value}" : null)
             .Where(s => s is not null));
+
+        long? IChat.Id => UserId;
 
 
         [AttributeUsage(AttributeTargets.Property, AllowMultiple = false)]
