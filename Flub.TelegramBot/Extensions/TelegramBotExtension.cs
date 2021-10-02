@@ -5,7 +5,7 @@ namespace Flub.TelegramBot
     /// <summary>
     /// Extension methods for adding the <see cref="TelegramBot"/> Service.
     /// </summary>
-    public static class TelegramBotServiceExtension
+    public static class TelegramBotExtension
     {
         /// <summary>
         /// Adds a scoped service of <see cref="TelegramBot"/> to the specified <see cref="IServiceCollection"/>.
