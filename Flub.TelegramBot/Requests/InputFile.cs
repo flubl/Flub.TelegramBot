@@ -106,9 +106,7 @@ namespace Flub.TelegramBot
             public override void Write(Utf8JsonWriter writer, InputFile value, JsonSerializerOptions options)
             {
                 value.EnsureSinglePropertyIsSet();
-                if (value.File is not null)
-                    throw new NotSupportedException();
-                writer.WriteStringValue(value.FileId ?? value.Url.ToString());
+                writer.WriteStringValue(value.FileId ?? value.Url?.ToString() ?? value.File?.AttachValue);
             }
         }
 
@@ -117,6 +115,16 @@ namespace Flub.TelegramBot
         /// </summary>
         public class FileStream
         {
+            /// <summary>
+            /// Unique identifier for the upload of this file.
+            /// </summary>
+            [JsonIgnore]
+            public Guid Id { get; } = Guid.NewGuid();
+            /// <summary>
+            /// Unique identifier path in form of "attack://{Id}".
+            /// </summary>
+            [JsonIgnore]
+            public string AttachValue => $"attach://{Id}";
             /// <summary>
             /// Name of the file to be uploaded.
             /// </summary>

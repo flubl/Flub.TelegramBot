@@ -43,6 +43,7 @@ namespace Flub.TelegramBot
                 throw new ArgumentNullException(nameof(method));
             if (response is null)
                 throw new ArgumentNullException(nameof(response));
+            Method = method;
             Response = response;
         }
 

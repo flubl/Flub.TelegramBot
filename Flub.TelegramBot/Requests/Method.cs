@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Linq;
 using System.Reflection;
@@ -31,22 +32,12 @@ namespace Flub.TelegramBot
         /// <summary>
         /// Returns all properties with it's name and value to be uploaded.
         /// </summary>
-        /// <returns>Returns a <see cref="IImmutableDictionary{TKey, TValue}"/> with all values to be uploaded.</returns>
+        /// <returns>Returns a <see cref="IImmutableDictionary{string, object}"/> with all values to be uploaded.</returns>
         public IImmutableDictionary<string, object> GetProperties() => GetType().GetProperties()
             .Where(p => p.GetCustomAttribute<JsonIgnoreAttribute>() is null)
             .ToImmutableDictionary(
                 p => p.GetCustomAttribute<JsonPropertyNameAttribute>()?.Name ?? p.Name,
                 p => p.GetValue(this));
-
-        /// <summary>
-        /// Indicates whenever there is a file to be uploaded.
-        /// </summary>
-        /// <returns>True, if the method contains a file to be uploaded.</returns>
-        public bool HasFiles() => GetType().GetProperties()
-            .Any(p => p.PropertyType == typeof(InputFile)
-                && p.GetCustomAttribute<JsonIgnoreAttribute>() is null
-                && p.GetValue(this) is InputFile file
-                && file.IsFile);
     }
 
     /// <summary>
@@ -60,6 +51,31 @@ namespace Flub.TelegramBot
         /// </summary>
         /// <param name="name">The name of the request method.</param>
         protected Method(string name)
+            : base(name)
+        {
+
+        }
+    }
+
+    /// <summary>
+    /// Base class of a request method with files to be uploaded.
+    /// </summary>
+    /// <typeparam name="TResult">The type of the result in the response.</typeparam>
+    public abstract class MethodUpload<TResult> : Method<TResult>, IFileContainer where TResult : class
+    {
+        /// <summary>
+        /// The Files to be uploaded.
+        /// </summary>
+        protected abstract IEnumerable<InputFile> Files { get; }
+
+        bool IFileContainer.HasFiles => Files?.Any(f => f?.IsFile ?? false) ?? false;
+        IEnumerable<InputFile> IFileContainer.Files => Files;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MethodUpload{TResult}"/> class with a specified request method.
+        /// </summary>
+        /// <param name="name">The name of the request method.</param>
+        protected MethodUpload(string name)
             : base(name)
         {
 

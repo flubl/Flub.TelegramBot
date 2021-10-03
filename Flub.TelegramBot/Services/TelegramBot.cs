@@ -60,32 +60,25 @@ namespace Flub.TelegramBot
             try
             {
                 using HttpRequestMessage request = new(HttpMethod.Post, method.Name);
-                if (method.HasFiles())
+                if (method is IFileContainer container && container.HasFiles)
                 {
-                    MultipartFormDataContent content = new();
-                    foreach ((string name, object value) in method.GetProperties().Where(i => i.Value is not null))
-                    {
-                        if (value is InputFile input)
-                        {
-                            if (input.IsFile)
+                    MultipartFormDataContent contents = new();
+                    foreach (InputFile input in container.Files.Where(i => i?.IsFile ?? false))
+                        contents.Add(
+                            new StreamContent(input.File.Stream)
                             {
-                                StreamContent stream = new(input.File.Stream);
-                                stream.Headers.ContentType = new MediaTypeHeaderValue(input.File.Type ?? MimeTypes.GetMimeType(input.File.Name));
-                                content.Add(stream, name, input.File.Name);
-                            }
-                        }
-                        else if (value is string s)
-                        {
-                            StringContent stringContent = new(s);
-                            content.Add(stringContent, name);
-                        }
-                        else
-                        {
-                            JsonContent jsonContent = JsonContent.Create(value, value.GetType(), options: options);
-                            content.Add(jsonContent, name);
-                        }
-                    }
-                    request.Content = content;
+                                Headers = { ContentType = new MediaTypeHeaderValue(input.File.Type ?? MimeTypes.GetMimeType(input.File.Name)) }
+                            },
+                            input.File.Id.ToString(),
+                            input.File.Name);
+                    foreach ((string name, HttpContent value) in method.GetProperties()
+                        .Where(i => i.Value is not null)
+                        .ToDictionary(i => i.Key, i => (HttpContent)(
+                            i.Value is string s ? new StringContent(s) :
+                            i.Value is InputFile input ? new StringContent(input.File.AttachValue) :
+                            JsonContent.Create(i.Value, i.Value.GetType(), options: options))))
+                        contents.Add(value, name);
+                    request.Content = contents;
                 }
                 else
                     request.Content = JsonContent.Create(method, method.GetType(), options: options);
