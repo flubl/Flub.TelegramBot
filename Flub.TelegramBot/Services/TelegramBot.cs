@@ -52,7 +52,7 @@ namespace Flub.TelegramBot
         /// <param name="method">The method to be requested.</param>
         /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <returns>Returns the result of the request on success.</returns>
-        public async Task<T> Send<T>(Method<T> method, CancellationToken cancellationToken = default) where T : class
+        public async Task<T> Send<T>(Method<T> method, CancellationToken cancellationToken = default)
         {
             if (method is null)
                 throw new ArgumentNullException(nameof(method));

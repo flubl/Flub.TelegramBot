@@ -44,7 +44,7 @@ namespace Flub.TelegramBot
     /// Base class of a request method with the specified <see cref="Response{TResult}.Result"/> type.
     /// </summary>
     /// <typeparam name="TResult">The type of the result in the response.</typeparam>
-    public abstract class Method<TResult> : Method where TResult : class
+    public abstract class Method<TResult> : Method
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="Method{TResult}"/> class with a specified request method.
@@ -61,7 +61,7 @@ namespace Flub.TelegramBot
     /// Base class of a request method with files to be uploaded.
     /// </summary>
     /// <typeparam name="TResult">The type of the result in the response.</typeparam>
-    public abstract class MethodUpload<TResult> : Method<TResult>, IFileContainer where TResult : class
+    public abstract class MethodUpload<TResult> : Method<TResult>, IFileContainer
     {
         /// <summary>
         /// The Files to be uploaded.

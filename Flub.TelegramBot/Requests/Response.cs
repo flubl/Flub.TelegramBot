@@ -33,7 +33,7 @@ namespace Flub.TelegramBot
     /// Response from a request to the Telegram Bot API with the specified result type.
     /// </summary>
     /// <typeparam name="TResult">The type of result.</typeparam>
-    public class Response<TResult> : Response where TResult : class
+    public class Response<TResult> : Response
     {
         /// <summary>
         /// Result of a successful request.
