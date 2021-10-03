@@ -4,6 +4,9 @@ using System.Text.Json.Serialization;
 
 namespace Flub.TelegramBot.Types
 {
+    /// <summary>
+    /// Mode for parsing texts. See <see href="https://core.telegram.org/bots/api#formatting-options">formatting options</see> for more details.
+    /// </summary>
     [Flags]
     [JsonConverter(typeof(JsonFieldEnumConverter<ParseMode>))]
     public enum ParseMode : int
