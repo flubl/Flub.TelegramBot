@@ -16,7 +16,7 @@ namespace Flub.TelegramBot.Types
         /// Optional. Mode for parsing entities in the media caption. See <see href="https://core.telegram.org/bots/api#formatting-options">formatting options</see> for more details.
         /// </summary>
         [JsonPropertyName("parse_mode")]
-        public string ParseMode { get; set; }
+        public ParseMode ParseMode { get; set; }
         /// <summary>
         /// Optional. List of special entities that appear in the caption, which can be specified instead of parse_mode.
         /// </summary>
