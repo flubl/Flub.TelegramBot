@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using System.Text.Json.Serialization;
 
 namespace Flub.TelegramBot.Types
@@ -18,16 +17,7 @@ namespace Flub.TelegramBot.Types
         /// <summary>
         /// The files to be uploaded.
         /// </summary>
-        protected override IEnumerable<InputFile> Files
-        {
-            get
-            {
-                foreach (var item in base.Files.Where(f => f is not null))
-                    yield return item;
-                if (Thumb?.IsFile ?? false)
-                    yield return Thumb;
-            }
-        }
+        protected override IEnumerable<InputFile> Files { get { foreach (InputFile file in base.Files) yield return file; yield return Thumb; } }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="InputMediaWithThumb"/> class with a specified type.

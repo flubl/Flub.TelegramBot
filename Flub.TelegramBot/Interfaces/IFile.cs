@@ -1,7 +1,7 @@
 ﻿namespace Flub.TelegramBot
 {
     /// <summary>
-    /// Interface of a file with a id from the telegram servers.
+    /// Interface of a file with a id stored on the telegram servers.
     /// </summary>
     public interface IFile
     {

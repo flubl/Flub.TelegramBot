@@ -5,8 +5,13 @@ namespace Flub.TelegramBot.Types
     /// <summary>
     /// This object represents an audio file to be treated as music by the Telegram clients.
     /// </summary>
-    public class Audio : Video
+    public class Audio : Document
     {
+        /// <summary>
+        /// Duration of the audio in seconds as defined by sender.
+        /// </summary>
+        [JsonPropertyName("duration")]
+        public int? Duration { get; set; }
         /// <summary>
         /// Optional. Performer of the audio as defined by sender or by audio tags.
         /// </summary>

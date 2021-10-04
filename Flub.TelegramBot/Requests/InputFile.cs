@@ -1,4 +1,5 @@
-﻿using MimeKit;
+﻿using Flub.TelegramBot.Types;
+using MimeKit;
 using System;
 using System.IO;
 using System.Text.Json;
@@ -95,6 +96,7 @@ namespace Flub.TelegramBot
         public static implicit operator InputFile(FileInfo file) => FromFile(file);
         public static implicit operator InputFile(string fileId) => FromFileId(fileId);
         public static implicit operator InputFile(Uri url) => FromUrl(url);
+        public static implicit operator InputFile(FileBase file) => FromFileId(file.Id);
 
         private class JsonInputFileConverter : JsonConverter<InputFile>
         {

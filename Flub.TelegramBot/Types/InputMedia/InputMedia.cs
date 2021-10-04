@@ -31,14 +31,7 @@ namespace Flub.TelegramBot.Types
         /// <summary>
         /// The files to be uploaded.
         /// </summary>
-        protected virtual IEnumerable<InputFile> Files
-        {
-            get
-            {
-                if (Media?.IsFile ?? false)
-                    yield return Media;
-            }
-        }
+        protected virtual IEnumerable<InputFile> Files { get { yield return Media; } }
 
         bool IFileContainer.HasFiles => Files?.Any(f => f?.IsFile ?? false) ?? false;
         IEnumerable<InputFile> IFileContainer.Files => Files;

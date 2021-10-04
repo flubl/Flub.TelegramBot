@@ -8,7 +8,7 @@ namespace Flub.TelegramBot.Types
     public class VideoNote : FileBase
     {
 		/// <summary>
-		/// Video width and height(diameter of the video message) as defined by sender.
+		/// Video width and height (diameter of the video message) as defined by sender.
 		/// </summary>
 		[JsonPropertyName("length")]
 		public int? Length { get; set; }

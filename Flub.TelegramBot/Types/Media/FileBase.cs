@@ -18,7 +18,7 @@ namespace Flub.TelegramBot.Types
         [JsonPropertyName("file_unique_id")]
         public string UniqueId { get; set; }
         /// <summary>
-        /// Optional. File size, if known.
+        /// Optional. File size.
         /// </summary>
         [JsonPropertyName("file_size")]
         public int? Size { get; set; }
