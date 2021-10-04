@@ -1,4 +1,5 @@
-﻿using System.Text.Json.Serialization;
+﻿using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace Flub.TelegramBot.Types
 {
@@ -21,7 +22,7 @@ namespace Flub.TelegramBot.Types
         /// Optional. List of special entities that appear in the caption, which can be specified instead of parse_mode.
         /// </summary>
         [JsonPropertyName("caption_entities")]
-        public MessageEntity[] CaptionEntities { get; set; }
+        public IEnumerable<MessageEntity> CaptionEntities { get; set; }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="InputMediaPhoto"/> class with a specified type.

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Text.Json.Serialization;
 
 namespace Flub.TelegramBot.Types
@@ -47,6 +48,6 @@ namespace Flub.TelegramBot.Types
         /// Optional. A list of update types the bot is subscribed to. Defaults to all update types except chat_member.
         /// </summary>
         [JsonPropertyName("allowed_updates")]
-        public UpdateType[] AllowedUpdates { get; set; }
+        public IEnumerable<UpdateType> AllowedUpdates { get; set; }
     }
 }

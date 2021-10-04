@@ -1,4 +1,5 @@
-﻿using System.Text.Json.Serialization;
+﻿using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace Flub.TelegramBot.Types
 {
@@ -16,6 +17,6 @@ namespace Flub.TelegramBot.Types
         /// Requested profile pictures (in up to 4 sizes each).
         /// </summary>
         [JsonPropertyName("photos")]
-        public PhotoSize[][] Photos { get; set; }
+        public IEnumerable<IEnumerable<PhotoSize>> Photos { get; set; }
     }
 }

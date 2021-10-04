@@ -1,4 +1,5 @@
-﻿using System.Text.Json.Serialization;
+﻿using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace Flub.TelegramBot.Types
 {
@@ -11,6 +12,6 @@ namespace Flub.TelegramBot.Types
         /// Optional. New members that were invited to the voice chat.
         /// </summary>
         [JsonPropertyName("users")]
-        public User[] Users { get; set; }
+        public IEnumerable<User> Users { get; set; }
     }
 }

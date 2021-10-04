@@ -1,5 +1,6 @@
 ﻿using Flub.Utils.Json;
 using System;
+using System.Collections.Generic;
 using System.Text.Json.Serialization;
 
 namespace Flub.TelegramBot.Types
@@ -23,7 +24,7 @@ namespace Flub.TelegramBot.Types
         /// List of poll options.
         /// </summary>
         [JsonPropertyName("options")]
-        public PollOption[] Options { get; set; }
+        public IEnumerable<PollOption> Options { get; set; }
         /// <summary>
         /// Total number of users that voted in the poll.
         /// </summary>
@@ -63,7 +64,7 @@ namespace Flub.TelegramBot.Types
         /// Optional. Special entities like usernames, URLs, bot commands, etc. that appear in the explanation.
         /// </summary>
         [JsonPropertyName("explanation_entities")]
-        public MessageEntity[] ExplanationEntries { get; set; }
+        public IEnumerable<MessageEntity> ExplanationEntries { get; set; }
         /// <summary>
         /// Optional. Amount of time in seconds the poll will be active after creation.
         /// </summary>

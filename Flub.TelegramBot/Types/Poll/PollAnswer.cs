@@ -1,4 +1,5 @@
-﻿using System.Text.Json.Serialization;
+﻿using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace Flub.TelegramBot.Types
 {
@@ -21,6 +22,6 @@ namespace Flub.TelegramBot.Types
         /// Identifiers of answer options, chosen by the user. May be empty if the user retracted their vote.
         /// </summary>
         [JsonPropertyName("poll_id")]
-        public int[] OptionIds { get; set; }
+        public IEnumerable<int> OptionIds { get; set; }
     }
 }

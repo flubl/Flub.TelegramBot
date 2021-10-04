@@ -1,4 +1,5 @@
-﻿using System.Text.Json.Serialization;
+﻿using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace Flub.TelegramBot.Types
 {
@@ -8,10 +9,10 @@ namespace Flub.TelegramBot.Types
     public class ReplyKeyboardMarkup : ReplyMarkup
     {
         /// <summary>
-        /// Array of button rows, each represented by an Array of KeyboardButton objects.
+        /// List of button rows, each represented by a list of KeyboardButton objects.
         /// </summary>
         [JsonPropertyName("keyboard")]
-        public KeyboardButton[][] Keyboard { get; set; }
+        public IEnumerable<IEnumerable<KeyboardButton>> Keyboard { get; set; }
         /// <summary>
         /// Optional. Requests clients to resize the keyboard vertically for optimal fit (e.g., make the keyboard smaller if there are just two rows of buttons). Defaults to false, in which case the custom keyboard is always of the same height as the app's standard keyboard.
         /// </summary>
