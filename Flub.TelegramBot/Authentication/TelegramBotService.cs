@@ -1,4 +1,4 @@
-﻿using Flub.TelegramBot.Authorization;
+﻿using Flub.TelegramBot.Authentication;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Security.Cryptography;
@@ -14,7 +14,7 @@ namespace Flub.TelegramBot
         /// <param name="authorizationData">The data to be validated.</param>
         /// <param name="throwExceptionOnFailure">True to throw a exception if validation fails.</param>
         /// <returns>Returns true if the validation was successful.</returns>
-        public bool ValidateAuthorizationData(AuthorizationData authorizationData, bool throwExceptionOnFailure = true)
+        public bool ValidateAuthorizationData(AuthenticationData authorizationData, bool throwExceptionOnFailure = true)
         {
             if (authorizationData is null)
                 throw new ArgumentNullException(nameof(authorizationData));

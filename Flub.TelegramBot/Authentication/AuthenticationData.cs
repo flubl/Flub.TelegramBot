@@ -3,13 +3,13 @@ using System.Linq;
 using System.Reflection;
 using System.Text.Json.Serialization;
 
-namespace Flub.TelegramBot.Authorization
+namespace Flub.TelegramBot.Authentication
 {
     /// <summary>
     /// Contains data about a user. The integrity can be verified with the <see cref="TelegramBot.ValidateAuthorizationData"/> method.
     /// See <see href="https://core.telegram.org/widgets/login">Telegram Login Widget</see> for more informations.
     /// </summary>
-    public class AuthorizationData : IUser
+    public class AuthenticationData : IUser
     {
         /// <summary>
         /// Date of the authentication data was created in unix time format.
@@ -61,7 +61,7 @@ namespace Flub.TelegramBot.Authorization
         /// Concatenation of all received fields.
         /// </summary>
         [JsonIgnore]
-        public string DataCheckString => string.Join('\n', typeof(AuthorizationData).GetProperties()
+        public string DataCheckString => string.Join('\n', GetType().GetProperties()
             .Where(p => p.GetCustomAttributes<AuthenticationFieldAttribute>().Any())
             .Select(p => p.GetCustomAttribute<JsonPropertyNameAttribute>() is JsonPropertyNameAttribute a && p.GetValue(this) is object value ? $"{a.Name}={value}" : null)
             .Where(s => s is not null));
@@ -70,7 +70,7 @@ namespace Flub.TelegramBot.Authorization
 
 
         [AttributeUsage(AttributeTargets.Property, AllowMultiple = false)]
-        private sealed class AuthenticationFieldAttribute : Attribute
+        protected sealed class AuthenticationFieldAttribute : Attribute
         {
 
         }
