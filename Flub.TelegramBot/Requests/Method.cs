@@ -15,7 +15,7 @@ namespace Flub.TelegramBot
         /// <summary>
         /// The name of the request method.
         /// </summary>
-        [JsonIgnore]
+        [JsonPropertyName("method")]
         public string Name { get; }
 
         /// <summary>
