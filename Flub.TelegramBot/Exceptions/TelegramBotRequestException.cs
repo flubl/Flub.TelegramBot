@@ -10,7 +10,7 @@ namespace Flub.TelegramBot
         /// <summary>
         /// The requested method.
         /// </summary>
-        public Method Method { get; set; }
+        public IMethod Method { get; set; }
         /// <summary>
         /// Information about the error.
         /// </summary>
@@ -36,7 +36,7 @@ namespace Flub.TelegramBot
         /// <param name="response">The response that describes the error.</param>
         /// <param name="message">The message that describes the error.</param>
         /// <param name="innerException">The exception that is the cause of the current exception, or a null reference if no inner exception is specified.</param>
-        public TelegramBotRequestException(Method method, Response response, string message, Exception innerException)
+        public TelegramBotRequestException(IMethod method, Response response, string message, Exception innerException)
             : base(message, innerException)
         {
             if (method is null)
@@ -53,7 +53,7 @@ namespace Flub.TelegramBot
         /// <param name="method">The requested method.</param>
         /// <param name="response">The response that describes the error.</param>
         /// <param name="message">The message that describes the error.</param>
-        public TelegramBotRequestException(Method method, Response response, string message)
+        public TelegramBotRequestException(IMethod method, Response response, string message)
             : this(method, response, message, null)
         {
 

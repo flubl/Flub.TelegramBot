@@ -44,10 +44,7 @@ namespace Flub.TelegramBot.Authentication
         public virtual string AuthenticationFields => string.Join(fieldSeparator, GetType().GetProperties()
             .Where(p => p.GetCustomAttributes<AuthenticationFieldAttribute>().Any())
             .Select(p => new KeyValuePair<PropertyInfo, object>(p, p.GetValue(this)))
-            .Where(i => (i.Key.GetCustomAttribute<JsonIgnoreAttribute>()?.Condition ?? jsonSerializerOptions?.DefaultIgnoreCondition ?? JsonIgnoreCondition.Never)
-                is JsonIgnoreCondition c && (c == JsonIgnoreCondition.Never
-                    || (c == JsonIgnoreCondition.WhenWritingDefault && !Equals(i.Value, default))
-                    || (c == JsonIgnoreCondition.WhenWritingNull && !Equals(i.Value, null))))
+            .Where(i => i.Key.SouldNotBeIgnored(i.Value, jsonSerializerOptions))
             .Select(i => new KeyValuePair<string, object>(i.Key.GetCustomAttribute<JsonPropertyNameAttribute>()?.Name ?? i.Key.Name, i.Value))
             .OrderBy(i => i.Key)
             .Select(i => i.Key + keyValueSeperator + JsonSerializer.Serialize(i.Value, jsonSerializerOptions).Trim('"')));

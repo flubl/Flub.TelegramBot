@@ -18,45 +18,60 @@ namespace Flub.TelegramBot
     /// </summary>
     public partial class TelegramBot
     {
+        /// <summary>
+        /// The implemented <see href="https://core.telegram.org/bots/api#recent-changes">Telegram Bot API Version</see>.
+        /// </summary>
+        public const string TELEGRAM_BOT_API_VERSION = "5.3";
+
+        /// <summary>
+        /// The <see cref="HttpClient"/> to be used for http requests.
+        /// </summary>
         protected readonly HttpClient client;
+        /// <summary>
+        /// The bot token.
+        /// </summary>
         protected readonly string token;
+        /// <summary>
+        /// The <see cref="JsonSerializerOptions"/> to be configured.
+        /// </summary>
         protected readonly JsonSerializerOptions options;
+        /// <summary>
+        /// The <see cref="ILogger{TelegramBot}"/> to be used.
+        /// </summary>
         protected readonly ILogger<TelegramBot> logger;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="TelegramBot"/> class with the specified http client, bot options, json options and logger.
         /// </summary>
-        /// <param name="client">The <see cref="HttpClient"/> to be used.</param>
+        /// <param name="client">The <see cref="HttpClient"/> to be used for http requests.</param>
         /// <param name="botOptions">The <see cref="TelegramBotOptions"/> to be configured.</param>
         /// <param name="jsonOptions">The <see cref="JsonSerializerOptions"/> to be configured.</param>
         /// <param name="logger">The <see cref="ILogger{TelegramBot}"/> to be used.</param>
         public TelegramBot(HttpClient client, IOptions<TelegramBotOptions> botOptions, IOptions<JsonSerializerOptions> jsonOptions, ILogger<TelegramBot> logger)
         {
-            if (client is null)
-                throw new ArgumentNullException(nameof(client));
-            if (botOptions is null)
-                throw new ArgumentNullException(nameof(botOptions));
-            if (jsonOptions is null)
-                throw new ArgumentNullException(nameof(jsonOptions));
-            TelegramBotOptions config = botOptions.Value;
-            this.client = client;
-            this.client.BaseAddress = new Uri($"{config.API.TrimEnd('/')}/bot{token = config.Token}/");
-            options = new JsonSerializerOptions(jsonOptions.Value) { DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingDefault };
+            TelegramBotOptions config = botOptions?.Value ?? throw new ArgumentNullException(nameof(botOptions));
+            if (string.IsNullOrEmpty(botOptions?.Value?.API) || string.IsNullOrEmpty(botOptions?.Value?.Token))
+                throw new ArgumentException("One or more option values are not set.", nameof(botOptions));
+            this.client = client ?? throw new ArgumentNullException(nameof(client));
+            this.client.BaseAddress = new($"{config.API.TrimEnd('/')}/bot{token = config.Token}/");
+            options = jsonOptions?.Value is JsonSerializerOptions value ? new(value) : new();
+            options.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingDefault;
             this.logger = logger;
+            this.logger?.LogInformation($"{GetType()} created with Telegram Bot API {TELEGRAM_BOT_API_VERSION}");
         }
 
         /// <summary>
         /// Makes a request with the specified method.
         /// </summary>
-        /// <typeparam name="T">Return type of the request.</typeparam>
+        /// <typeparam name="TResult">Return type of the request.</typeparam>
         /// <param name="method">The method to be requested.</param>
         /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <returns>Returns the result of the request on success.</returns>
-        public async Task<T> Send<T>(Method<T> method, CancellationToken cancellationToken = default)
+        public async Task<TResult> Send<TResult>(IMethod<TResult> method, CancellationToken cancellationToken = default)
         {
             if (method is null)
                 throw new ArgumentNullException(nameof(method));
-            Response<T> response = null;
+            Response<TResult> response = null;
             try
             {
                 using HttpRequestMessage request = new(HttpMethod.Post, method.Name);
@@ -83,7 +98,7 @@ namespace Flub.TelegramBot
                 else
                     request.Content = JsonContent.Create(method, method.GetType(), options: options);
                 using HttpResponseMessage message = await client.SendAsync(request, cancellationToken);
-                response = await message.Content.ReadFromJsonAsync<Response<T>>(options, cancellationToken);
+                response = await message.Content.ReadFromJsonAsync<Response<TResult>>(options, cancellationToken);
                 message.EnsureSuccessStatusCode();
                 return response.Result;
             }

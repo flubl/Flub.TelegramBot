@@ -3,14 +3,16 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Linq;
 using System.Reflection;
+using System.Text.Json;
 using System.Text.Json.Serialization;
 
 namespace Flub.TelegramBot
 {
     /// <summary>
-    /// Base class of a request method.
+    /// Base class of a request method with the specified <see cref="Response{TResult}.Result"/> type.
     /// </summary>
-    public abstract class Method
+    /// <typeparam name="TResult">The type of the result in the response.</typeparam>
+    public abstract class Method<TResult> : IMethod<TResult>
     {
         /// <summary>
         /// The name of the request method.
@@ -19,7 +21,7 @@ namespace Flub.TelegramBot
         public string Name { get; }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Method"/> class with a specified request method.
+        /// Initializes a new instance of the <see cref="Method{TResult}"/> class with a specified request method.
         /// </summary>
         /// <param name="name">The name of the request method.</param>
         protected Method(string name)
@@ -32,29 +34,13 @@ namespace Flub.TelegramBot
         /// <summary>
         /// Returns all properties with it's name and value to be uploaded.
         /// </summary>
+        /// <param name="options">Optional <see cref="JsonSerializerOptions"/> to check if a property should be ignored.</param>
         /// <returns>Returns a <see cref="IImmutableDictionary{string, object}"/> with all values to be uploaded.</returns>
-        public IImmutableDictionary<string, object> GetProperties() => GetType().GetProperties()
-            .Where(p => p.GetCustomAttribute<JsonIgnoreAttribute>() is null)
-            .ToImmutableDictionary(
-                p => p.GetCustomAttribute<JsonPropertyNameAttribute>()?.Name ?? p.Name,
-                p => p.GetValue(this));
-    }
+        public IImmutableDictionary<string, object> GetProperties(JsonSerializerOptions options = null) => GetType().GetProperties()
+            .Where(p => p.SouldNotBeIgnored(p.GetValue(this), options))
+            .ToImmutableDictionary(p => p.GetCustomAttribute<JsonPropertyNameAttribute>()?.Name ?? p.Name, p => p.GetValue(this));
 
-    /// <summary>
-    /// Base class of a request method with the specified <see cref="Response{TResult}.Result"/> type.
-    /// </summary>
-    /// <typeparam name="TResult">The type of the result in the response.</typeparam>
-    public abstract class Method<TResult> : Method
-    {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Method{TResult}"/> class with a specified request method.
-        /// </summary>
-        /// <param name="name">The name of the request method.</param>
-        protected Method(string name)
-            : base(name)
-        {
-
-        }
+        public override string ToString() => base.ToString();
     }
 
     /// <summary>
@@ -68,8 +54,8 @@ namespace Flub.TelegramBot
         /// </summary>
         protected abstract IEnumerable<InputFile> Files { get; }
 
-        bool IFileContainer.HasFiles => Files?.Any(f => f?.IsFile ?? false) ?? false;
-        IEnumerable<InputFile> IFileContainer.Files => Files;
+        bool IFileContainer.HasFiles => ((IFileContainer)this).Files?.Any() ?? false;
+        IEnumerable<InputFile> IFileContainer.Files => Files?.Where(f => f?.IsFile ?? false);
 
         /// <summary>
         /// Initializes a new instance of the <see cref="MethodUpload{TResult}"/> class with a specified request method.

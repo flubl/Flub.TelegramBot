@@ -46,16 +46,8 @@ namespace Flub.TelegramBot
         public void EnsureSinglePropertyIsSet()
         {
             if (((IsFile ? 1 : 0) + (Url is null ? 0 : 1) + (FileId is null ? 0 : 1)) != 1)
-                throw new TelegramBotException("the input file contains no or more than one properties");
+                throw new TelegramBotException("The input file contains no or more than one properties.");
         }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="InputFile"/> class from the specified file and sets <see cref="File"/>.
-        /// </summary>
-        /// <param name="fileName">Path to the file to be uploaded.</param>
-        /// <returns>Returns a new instance of the <see cref="InputFile"/></returns>
-        public static InputFile FromFile(string fileName) =>
-            FromFile(new FileInfo(fileName));
 
         /// <summary>
         /// Initializes a new instance of the <see cref="InputFile"/> class from the specified fileinfo and sets <see cref="File"/>.
@@ -73,6 +65,14 @@ namespace Flub.TelegramBot
         };
 
         /// <summary>
+        /// Initializes a new instance of the <see cref="InputFile"/> class from the specified file and sets <see cref="File"/>.
+        /// </summary>
+        /// <param name="fileName">Path to the file to be uploaded.</param>
+        /// <returns>Returns a new instance of the <see cref="InputFile"/></returns>
+        public static InputFile FromFile(string fileName) =>
+            FromFile(new FileInfo(fileName));
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="InputFile"/> class with the <see cref="FileId"/> of the specified value.
         /// </summary>
         /// <param name="fileName">The file id of the file to be send.</param>
@@ -84,7 +84,7 @@ namespace Flub.TelegramBot
         /// </summary>
         /// <param name="fileName">The file to be send.</param>
         /// <returns>Returns a new instance of the <see cref="InputFile"/></returns>
-        public static InputFile FromFileId(IFile file) => new() { FileId = file?.Id };
+        public static InputFile FromFileId(IFile file) => FromFileId(file?.Id);
 
         /// <summary>
         /// Initializes a new instance of the <see cref="InputFile"/> class with the <see cref="Url"/> of the specified url.
