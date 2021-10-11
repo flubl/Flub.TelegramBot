@@ -3,7 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31702.278
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Flub.TelegramBot", "Flub.TelegramBot\Flub.TelegramBot.csproj", "{0E2BE0E7-6AC1-4A0B-BC3E-6AA6083325B6}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{391FAB74-626A-4DFC-9375-0531281B4EC5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Src", "Src", "{735001D8-78BF-448F-A9FD-BD6D401EA836}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Flub.TelegramBot.Tests", "Tests\Flub.TelegramBot.Tests\Flub.TelegramBot.Tests.csproj", "{46F76649-2F3E-4F7A-8C47-B6790A020ADD}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Flub.TelegramBot", "Src\Flub.TelegramBot\Flub.TelegramBot.csproj", "{11023356-72C6-47A6-81A3-53B3451CB2B8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,13 +17,21 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{0E2BE0E7-6AC1-4A0B-BC3E-6AA6083325B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0E2BE0E7-6AC1-4A0B-BC3E-6AA6083325B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0E2BE0E7-6AC1-4A0B-BC3E-6AA6083325B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0E2BE0E7-6AC1-4A0B-BC3E-6AA6083325B6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{46F76649-2F3E-4F7A-8C47-B6790A020ADD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{46F76649-2F3E-4F7A-8C47-B6790A020ADD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{46F76649-2F3E-4F7A-8C47-B6790A020ADD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{46F76649-2F3E-4F7A-8C47-B6790A020ADD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{11023356-72C6-47A6-81A3-53B3451CB2B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{11023356-72C6-47A6-81A3-53B3451CB2B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{11023356-72C6-47A6-81A3-53B3451CB2B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{11023356-72C6-47A6-81A3-53B3451CB2B8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{46F76649-2F3E-4F7A-8C47-B6790A020ADD} = {391FAB74-626A-4DFC-9375-0531281B4EC5}
+		{11023356-72C6-47A6-81A3-53B3451CB2B8} = {735001D8-78BF-448F-A9FD-BD6D401EA836}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7C112E4F-DF40-467E-A1DC-6E82488AAEEB}

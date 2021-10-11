@@ -10,7 +10,7 @@ namespace Flub.TelegramBot.Types
     public class File : FileBase
     {
         /// <summary>
-        /// Optional. File path. Use https://api.telegram.org/file/bot<token>/<file_path> to get the file.
+        /// Optional. File path. Use https://api.telegram.org/file/bot{token}/{file_path} to get the file.
         /// </summary>
         [JsonPropertyName("file_path")]
         public Uri FilePath { get; set; }
