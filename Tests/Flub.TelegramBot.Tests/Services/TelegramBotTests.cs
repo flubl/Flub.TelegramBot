@@ -57,10 +57,10 @@ namespace Flub.TelegramBot.Services.Tests
                     // InputFile -> StringContent
                     yield return new KeyValuePair<string, object>(file1Name, file1);
                     yield return new KeyValuePair<string, object>(file2Name, file2);
+                    yield return new KeyValuePair<string, object>(uriName, uriValue);
                     // int -> JsonContent
                     yield return new KeyValuePair<string, object>(numberName, numberValue);
                     // others -> JsonContent
-                    yield return new KeyValuePair<string, object>(uriName, uriValue);
                     yield return new KeyValuePair<string, object>(exampleName, new Example());
                 }
             }
@@ -302,6 +302,9 @@ namespace Flub.TelegramBot.Services.Tests
                                     case file2Name:
                                         Assert.AreEqual(file2.File.AttachValue, value);
                                         break;
+                                    case uriName:
+                                        Assert.AreEqual(uriValue.ToString(), value);
+                                        break;
                                     default:
                                         InputFile file = null;
                                         string fileContent = null;
@@ -328,9 +331,6 @@ namespace Flub.TelegramBot.Services.Tests
                                     {
                                         case numberName:
                                             Assert.AreEqual($"{numberValue}", value);
-                                            break;
-                                        case uriName:
-                                            Assert.AreEqual($"\"{uriValue}\"", value);
                                             break;
                                         case exampleName:
                                             Assert.AreEqual($"\"{exampleValue}\"", value);

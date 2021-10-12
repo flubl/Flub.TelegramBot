@@ -91,6 +91,7 @@ namespace Flub.TelegramBot
                         .ToDictionary(i => i.Key, i => (HttpContent)(
                             i.Value is string s ? new StringContent(s) :
                             i.Value is InputFile input ? new StringContent(input.File.AttachValue) :
+                            i.Value is Uri uri ? new StringContent(uri.ToString()) :
                             JsonContent.Create(i.Value, i.Value.GetType(), options: options))))
                         contents.Add(value, name);
                     request.Content = contents;
