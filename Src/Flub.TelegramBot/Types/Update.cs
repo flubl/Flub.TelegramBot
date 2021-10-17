@@ -42,18 +42,18 @@ namespace Flub.TelegramBot.Types
         [JsonPropertyName("edited_channel_post")]
         [UpdateType(UpdateType.EditedChannelPost)]
         public Message EditedChannelPost { get; set; }
-        ///// <summary>
-        ///// Optional. New incoming inline query.
-        ///// </summary>
-        //[JsonPropertyName("inline_query")]
-        //[UpdateType(UpdateType.InlineQuery)]
-        //public InlineQuery InlineQuery { get; set; }
-        ///// <summary>
-        ///// Optional. The result of an inline query that was chosen by a user and sent to their chat partner. Please see the documentation on the <see href="https://core.telegram.org/bots/inline#collecting-feedback">feedback collecting</see> for details on how to enable these updates for your bot.
-        ///// </summary>
-        //[JsonPropertyName("chosen_inline_result")]
-        //[UpdateType(UpdateType.ChosenInlineResult)]
-        //public ChosenInlineResult ChosenInlineResult { get; set; }
+        /// <summary>
+        /// Optional. New incoming inline query.
+        /// </summary>
+        [JsonPropertyName("inline_query")]
+        [UpdateType(UpdateType.InlineQuery)]
+        public InlineQuery InlineQuery { get; set; }
+        /// <summary>
+        /// Optional. The result of an inline query that was chosen by a user and sent to their chat partner. Please see the documentation on the <see href="https://core.telegram.org/bots/inline#collecting-feedback">feedback collecting</see> for details on how to enable these updates for your bot.
+        /// </summary>
+        [JsonPropertyName("chosen_inline_result")]
+        [UpdateType(UpdateType.ChosenInlineResult)]
+        public ChosenInlineResult ChosenInlineResult { get; set; }
         /// <summary>
         /// Optional. New incoming callback query.
         /// </summary>
