@@ -23,7 +23,8 @@ namespace Flub.TelegramBot.Types
         [JsonPropertyName("type")]
         public InputMediaType Type { get; }
         /// <summary>
-        /// Pass a file_id to send a file that exists on the Telegram servers (recommended), pass an HTTP URL for Telegram to get a file from the Internet, or pass “attach://<file_attach_name>” to upload a new one.
+        /// Pass a file id as <see cref="string"/> or <see cref="File"/> to send a file that exists on the Telegram servers (recommended),
+        /// pass an HTTP URL as a <see cref="Uri"/> for Telegram to get a file from the Internet, or upload a new one using <see cref="InputFile"/>.
         /// </summary>
         [JsonPropertyName("media")]
         public InputFile Media { get; set; }
@@ -33,8 +34,8 @@ namespace Flub.TelegramBot.Types
         /// </summary>
         protected virtual IEnumerable<InputFile> Files { get { yield return Media; } }
 
-        bool IFileContainer.HasFiles => Files?.Any(f => f?.IsFile ?? false) ?? false;
-        IEnumerable<InputFile> IFileContainer.Files => Files;
+        bool IFileContainer.HasFiles => ((IFileContainer)this).Files?.Any() ?? false;
+        IEnumerable<InputFile> IFileContainer.Files => Files?.Where(f => f?.IsFile ?? false);
 
         /// <summary>
         /// Initializes a new instance of the <see cref="InputMedia"/> class with a specified type.

@@ -19,7 +19,7 @@ namespace Flub.TelegramBot.Types
         [JsonPropertyName("parse_mode")]
         public ParseMode? ParseMode { get; set; }
         /// <summary>
-        /// Optional. List of special entities that appear in the caption, which can be specified instead of parse_mode.
+        /// Optional. List of special entities that appear in the caption, which can be specified instead of <see cref="ParseMode"/>.
         /// </summary>
         [JsonPropertyName("caption_entities")]
         public IEnumerable<MessageEntity> CaptionEntities { get; set; }
