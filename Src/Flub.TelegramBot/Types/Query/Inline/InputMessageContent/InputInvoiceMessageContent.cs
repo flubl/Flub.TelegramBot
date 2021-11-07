@@ -43,7 +43,7 @@ namespace Flub.TelegramBot.Types
         /// <summary>
         /// Optional. The maximum accepted amount for tips in the smallest units of the currency (integer, not float/double).
         /// For example, for a maximum tip of US$ 1.45 pass <see cref="MaxTipAmount"/> = 145.
-        /// See the exp parameter in <see cref="https://core.telegram.org/bots/payments/currencies.json">currencies.json</see>,
+        /// See the exp parameter in <see href="https://core.telegram.org/bots/payments/currencies.json">currencies.json</see>,
         /// it shows the number of digits past the decimal point for each currency (2 for the majority of currencies).
         /// Defaults to 0.
         /// </summary>
