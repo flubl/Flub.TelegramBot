@@ -1,6 +1,6 @@
 ﻿using Flub.TelegramBot.Methods;
+using Flub.TelegramBot.Types;
 using System;
-using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -14,7 +14,7 @@ namespace Flub.TelegramBot
         /// <param name="file">The file to download.</param>
         /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <returns>The task object representing the asynchronous operation.</returns>
-        public async Task<Stream> DownloadFile(IFile file, CancellationToken cancellationToken = default)
+        public async Task<System.IO.Stream> DownloadFile(IFile file, CancellationToken cancellationToken = default)
         {
             if (file is null)
                 throw new ArgumentNullException(nameof(file));
@@ -27,7 +27,7 @@ namespace Flub.TelegramBot
         /// <param name="file">The file to download.</param>
         /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <returns>The task object representing the asynchronous operation.</returns>
-        public Task<Stream> DownloadFile(Types.File file, CancellationToken cancellationToken = default)
+        public Task<System.IO.Stream> DownloadFile(File file, CancellationToken cancellationToken = default)
         {
             if (file is null)
                 throw new ArgumentNullException(nameof(file));
