@@ -14,7 +14,7 @@ namespace Flub.TelegramBot.Types
     /// <see cref="InputMediaPhoto"/>,
     /// <see cref="InputMediaVideo"/>
     /// </summary>
-    [JsonConverter(typeof(JsonConvertByGetTypeConverter<InputMedia>))]
+    [JsonConverter(typeof(JsonConvertByGetTypeConverter))]
     public abstract class InputMedia : IFileContainer
     {
         /// <summary>
@@ -45,13 +45,15 @@ namespace Flub.TelegramBot.Types
         {
             Type = type;
         }
+
+        public override string ToString() => $"{nameof(InputMedia)}[{Type}]";
     }
 
     /// <summary>
     /// Available input media types.
     /// </summary>
     [Flags]
-    [JsonConverter(typeof(JsonFieldEnumConverter<InputMediaType>))]
+    [JsonConverter(typeof(JsonFieldEnumConverter))]
     public enum InputMediaType : int
     {
         [JsonInclude]

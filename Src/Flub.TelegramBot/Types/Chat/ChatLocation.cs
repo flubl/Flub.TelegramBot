@@ -17,5 +17,7 @@ namespace Flub.TelegramBot.Types
         /// </summary>
         [JsonPropertyName("address")]
         public string Address { get; set; }
+
+        public override string ToString() => $"{nameof(ChatLocation)}[{Location}, {Address}]";
     }
 }

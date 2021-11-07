@@ -43,7 +43,7 @@ namespace Flub.TelegramBot.Methods
         public string FoursquareId { get; set; }
         /// <summary>
         /// Foursquare type of the venue, if known.
-        /// (For example, “arts_entertainment/default”, “arts_entertainment/aquarium” or “food/icecream”.)
+        /// (For example, "arts_entertainment/default", "arts_entertainment/aquarium" or "food/icecream".)
         /// </summary>
         [JsonPropertyName("foursquare_type")]
         public string FoursquareType { get; set; }
@@ -82,13 +82,13 @@ namespace Flub.TelegramBot.Methods
         /// <param name="foursquareId">Foursquare identifier of the venue.</param>
         /// <param name="foursquareType">
         /// Foursquare type of the venue, if known.
-        /// (For example, “arts_entertainment/default”, “arts_entertainment/aquarium” or “food/icecream”.)
+        /// (For example, "arts_entertainment/default", "arts_entertainment/aquarium" or "food/icecream".)
         /// </param>
         /// <param name="googlePlaceId">Google Places identifier of the venue.</param>
         /// <param name="googlePlaceType">Google Places type of the venue. (See <see href="https://developers.google.com/places/web-service/supported_types">supported types</see>.).</param>
         /// <param name="disableNotification">Sends the message silently. Users will receive a notification with no sound.</param>
         /// <param name="replyToMessageId">If the message is a reply, ID of the original message.</param>
-        /// <param name="allowSendingWithoutReply">Pass <see cref="true"/>, if the message should be sent even if the specified replied-to message is not found.</param>
+        /// <param name="allowSendingWithoutReply">Pass <see langword="true"/>, if the message should be sent even if the specified replied-to message is not found.</param>
         /// <param name="replyMarkup">
         /// Additional interface options.
         /// A object for an <see href="https://core.telegram.org/bots#inline-keyboards-and-on-the-fly-updating">inline keyboard</see> (<see cref="InlineKeyboardMarkup"/>),
@@ -142,13 +142,13 @@ namespace Flub.TelegramBot.Methods
         /// <param name="foursquareId">Foursquare identifier of the venue.</param>
         /// <param name="foursquareType">
         /// Foursquare type of the venue, if known.
-        /// (For example, “arts_entertainment/default”, “arts_entertainment/aquarium” or “food/icecream”.)
+        /// (For example, "arts_entertainment/default", "arts_entertainment/aquarium" or "food/icecream".)
         /// </param>
         /// <param name="googlePlaceId">Google Places identifier of the venue.</param>
         /// <param name="googlePlaceType">Google Places type of the venue. (See <see href="https://developers.google.com/places/web-service/supported_types">supported types</see>.).</param>
         /// <param name="disableNotification">Sends the message silently. Users will receive a notification with no sound.</param>
         /// <param name="replyToMessage">If the message is a reply, the original message.</param>
-        /// <param name="allowSendingWithoutReply">Pass <see cref="true"/>, if the message should be sent even if the specified replied-to message is not found.</param>
+        /// <param name="allowSendingWithoutReply">Pass <see langword="true"/>, if the message should be sent even if the specified replied-to message is not found.</param>
         /// <param name="replyMarkup">
         /// Additional interface options.
         /// A object for an <see href="https://core.telegram.org/bots#inline-keyboards-and-on-the-fly-updating">inline keyboard</see> (<see cref="InlineKeyboardMarkup"/>),

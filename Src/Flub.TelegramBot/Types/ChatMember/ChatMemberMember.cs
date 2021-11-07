@@ -19,19 +19,13 @@ namespace Flub.TelegramBot.Types
         /// Initializes a new instance of <see cref="ChatMemberMember"/> with the specified status.
         /// </summary>
         /// <param name="status">The member's status in the chat.</param>
-        protected ChatMemberMember(ChatMemberStatus status)
-            : base(status)
-        {
-
-        }
+        protected ChatMemberMember(ChatMemberStatus status) : base(status) { }
 
         /// <summary>
         /// Initializes a new instance of <see cref="ChatMemberMember"/> with the <see cref="ChatMemberStatus.Member"/> status.
         /// </summary>
-        public ChatMemberMember()
-            : this(ChatMemberStatus.Member)
-        {
+        public ChatMemberMember() : this(ChatMemberStatus.Member) { }
 
-        }
+        public override string ToString() => $"{nameof(ChatMemberMember)}[{User}]";
     }
 }

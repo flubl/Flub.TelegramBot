@@ -44,7 +44,7 @@ namespace Flub.TelegramBot.Methods
         [JsonPropertyName("reply_to_message_id")]
         public int? ReplyToMessageId { get; set; }
         /// <summary>
-        /// Pass <see cref="true"/>, if the message should be sent even if the specified replied-to message is not found.
+        /// Pass <see langword="true"/>, if the message should be sent even if the specified replied-to message is not found.
         /// </summary>
         [JsonPropertyName("allow_sending_without_reply")]
         public bool? AllowSendingWithoutReply { get; set; }

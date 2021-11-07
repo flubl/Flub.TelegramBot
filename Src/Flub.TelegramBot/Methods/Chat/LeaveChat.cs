@@ -7,7 +7,7 @@ namespace Flub.TelegramBot.Methods
 {
     /// <summary>
     /// Use this method for your bot to leave a group, supergroup or channel.
-    /// Returns <see cref="true"/> on success.
+    /// Returns <see langword="true"/> on success.
     /// </summary>
     public class LeaveChat : Method<bool?>
     {
@@ -31,7 +31,7 @@ namespace Flub.TelegramBot.Methods
 
         /// <summary>
         /// Use this method for your bot to leave a group, supergroup or channel.
-        /// Returns <see cref="true"/> on success.
+        /// Returns <see langword="true"/> on success.
         /// </summary>
         /// <param name="bot">The bot to send the request with.</param>
         /// <param name="chatId">Unique identifier for the target chat or username of the target supergroup or channel (in the format @channelusername).</param>
@@ -47,7 +47,7 @@ namespace Flub.TelegramBot.Methods
 
         /// <summary>
         /// Use this method for your bot to leave a group, supergroup or channel.
-        /// Returns <see cref="true"/> on success.
+        /// Returns <see langword="true"/> on success.
         /// </summary>
         /// <param name="bot">The bot to send the request with.</param>
         /// <param name="chat">The target chat.</param>

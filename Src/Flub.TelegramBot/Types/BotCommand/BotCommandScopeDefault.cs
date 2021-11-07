@@ -8,10 +8,8 @@ namespace Flub.TelegramBot.Types
     [JsonTyped(BotCommandScopeType.Default)]
     public class BotCommandScopeDefault : BotCommandScope
     {
-        public BotCommandScopeDefault()
-            : base(BotCommandScopeType.Default)
-        {
+        public BotCommandScopeDefault() : base(BotCommandScopeType.Default) { }
 
-        }
+        public override string ToString() => nameof(BotCommandScopeDefault);
     }
 }

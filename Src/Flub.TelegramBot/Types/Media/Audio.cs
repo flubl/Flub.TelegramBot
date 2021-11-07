@@ -22,5 +22,7 @@ namespace Flub.TelegramBot.Types
         /// </summary>
         [JsonPropertyName("title")]
         public string Title { get; set; }
+
+        public override string ToString() => $"{nameof(Audio)}[{Duration}s, {Id}]";
     }
 }

@@ -8,7 +8,7 @@ namespace Flub.TelegramBot.Methods
 {
     /// <summary>
     /// Use this method to edit only the reply markup of messages.
-    /// On success, if the edited message is not an inline message, the edited <see cref="Message"/> is returned, otherwise <see cref="true"/> is returned.
+    /// On success, if the edited message is not an inline message, the edited <see cref="Message"/> is returned, otherwise <see langword="true"/> is returned.
     /// </summary>
     public class EditMessageReplyMarkup<TResult> : Method<TResult>
     {
@@ -46,7 +46,7 @@ namespace Flub.TelegramBot.Methods
 
     /// <summary>
     /// Use this method to edit only the reply markup of messages.
-    /// On success, <see cref="true"/> is returned.
+    /// On success, <see langword="true"/> is returned.
     /// </summary>
     public class EditInlineMessageReplyMarkup : EditMessageReplyMarkup<bool?>
     {
@@ -109,7 +109,7 @@ namespace Flub.TelegramBot.Methods
 
         /// <summary>
         /// Use this method to edit only the reply markup of messages.
-        /// On success, <see cref="true"/> is returned.
+        /// On success, <see langword="true"/> is returned.
         /// </summary>
         /// <param name="bot">The bot to send the request with.</param>
         /// <param name="inlineMessageId">Identifier of the inline message.</param>
@@ -128,7 +128,7 @@ namespace Flub.TelegramBot.Methods
 
         /// <summary>
         /// Use this method to edit only the reply markup of messages.
-        /// On success, <see cref="true"/> is returned.
+        /// On success, <see langword="true"/> is returned.
         /// </summary>
         /// <param name="bot">The bot to send the request with.</param>
         /// <param name="inlineMessage">The inline message.</param>

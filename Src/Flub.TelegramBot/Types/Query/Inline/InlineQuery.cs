@@ -38,5 +38,7 @@ namespace Flub.TelegramBot.Types
         /// </summary>
         [JsonPropertyName("location")]
         public Location Location { get; set; }
+
+        public override string ToString() => $"{nameof(InlineQuery)}[{Id}, {Query}, {From}]";
     }
 }

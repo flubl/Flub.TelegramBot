@@ -11,7 +11,7 @@ namespace Flub.TelegramBot.Methods
     /// If the chat is not a private chat, the bot must be an administrator in the chat for this to work
     /// and must have the <see cref="ChatMemberAdministrator.CanPinMessages"/> admin right in a supergroup
     /// or <see cref="ChatMemberAdministrator.CanEditMessages"/> admin right in a channel.
-    /// Returns <see cref="true"/> on success.
+    /// Returns <see langword="true"/> on success.
     /// </summary>
     public class UnpinChatMessage : Method<bool?>
     {
@@ -43,7 +43,7 @@ namespace Flub.TelegramBot.Methods
         /// If the chat is not a private chat, the bot must be an administrator in the chat for this to work
         /// and must have the <see cref="ChatMemberAdministrator.CanPinMessages"/> admin right in a supergroup
         /// or <see cref="ChatMemberAdministrator.CanEditMessages"/> admin right in a channel.
-        /// Returns <see cref="true"/> on success.
+        /// Returns <see langword="true"/> on success.
         /// </summary>
         /// <param name="bot">The bot to send the request with.</param>
         /// <param name="chatId">Unique identifier for the target chat or username of the target channel (in the format @channelusername).</param>
@@ -65,7 +65,7 @@ namespace Flub.TelegramBot.Methods
         /// If the chat is not a private chat, the bot must be an administrator in the chat for this to work
         /// and must have the <see cref="ChatMemberAdministrator.CanPinMessages"/> admin right in a supergroup
         /// or <see cref="ChatMemberAdministrator.CanEditMessages"/> admin right in a channel.
-        /// Returns <see cref="true"/> on success.
+        /// Returns <see langword="true"/> on success.
         /// </summary>
         /// <param name="bot">The bot to send the request with.</param>
         /// <param name="chat">The target chat.</param>

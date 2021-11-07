@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
 
 namespace Flub.TelegramBot.Types
@@ -10,18 +11,21 @@ namespace Flub.TelegramBot.Types
     public class WebhookInfo
     {
         /// <summary>
-        /// Webhook URL, may be empty if webhook is not set up.
+        /// Webhook <see cref="Uri"/>, may be empty if webhook is not set up.
         /// </summary>
+        [Required]
         [JsonPropertyName("url")]
         public Uri Url { get; set; }
         /// <summary>
-        /// True, if a custom certificate was provided for webhook certificate checks.
+        /// <see langword="true"/>, if a custom certificate was provided for webhook certificate checks.
         /// </summary>
+        [Required]
         [JsonPropertyName("has_custom_certificate")]
         public bool? HasCustomCertificate { get; set; }
         /// <summary>
         /// Number of updates awaiting delivery.
         /// </summary>
+        [Required]
         [JsonPropertyName("pending_update_count")]
         public int? PendingUpdateCount { get; set; }
         /// <summary>
@@ -33,7 +37,16 @@ namespace Flub.TelegramBot.Types
         /// Optional. Unix time for the most recent error that happened when trying to deliver an update via webhook.
         /// </summary>
         [JsonPropertyName("last_error_date")]
-        public int? LastErrorDate { get; set; }
+        public long? LastErrorDateValue { get; set; }
+        /// <summary>
+        /// Optional. Date for the most recent error that happened when trying to deliver an update via webhook.
+        /// </summary>
+        [JsonIgnore]
+        public DateTime? LastErrorDate
+        {
+            get => LastErrorDateValue.HasValue ? DateTimeOffset.FromUnixTimeSeconds(LastErrorDateValue.Value).DateTime : null;
+            set => LastErrorDateValue = value.HasValue ? new DateTimeOffset(value.Value).ToUnixTimeSeconds() : null;
+        }
         /// <summary>
         /// Optional. Error message in human-readable format for the most recent error that happened when trying to deliver an update via webhook.
         /// </summary>
@@ -45,9 +58,11 @@ namespace Flub.TelegramBot.Types
         [JsonPropertyName("max_connections")]
         public int? MaxConnections { get; set; }
         /// <summary>
-        /// Optional. A list of update types the bot is subscribed to. Defaults to all update types except chat_member.
+        /// Optional. A list of update types the bot is subscribed to. Defaults to all update types except <see cref="UpdateType.ChatMember"/>.
         /// </summary>
         [JsonPropertyName("allowed_updates")]
         public IEnumerable<UpdateType> AllowedUpdates { get; set; }
+
+        public override string ToString() => $"{nameof(WebhookInfo)}[{Url}]";
     }
 }

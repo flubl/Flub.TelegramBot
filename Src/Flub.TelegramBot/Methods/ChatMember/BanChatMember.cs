@@ -9,7 +9,7 @@ namespace Flub.TelegramBot.Methods
     /// <summary>
     /// Use this method to ban a user in a group, a supergroup or a channel.
     /// In the case of supergroups and channels, the user will not be able to return to the chat on their own using invite links, etc., unless unbanned first.
-    /// The bot must be an administrator in the chat for this to work and must have the appropriate admin rights. Returns <see cref="true"/> on success.
+    /// The bot must be an administrator in the chat for this to work and must have the appropriate admin rights. Returns <see langword="true"/> on success.
     /// </summary>
     public class BanChatMember : Method<bool?>
     {
@@ -44,9 +44,9 @@ namespace Flub.TelegramBot.Methods
             set => UntilDateValue = value.HasValue ? new DateTimeOffset(value.Value).ToUnixTimeSeconds() : null;
         }
         /// <summary>
-        /// Pass <see cref="true"/> to delete all messages from the chat for the user that is being removed.
-        /// If <see cref="false"/>, the user will be able to see messages in the group that were sent before the user was removed.
-        /// Always <see cref="true"/> for supergroups and channels.
+        /// Pass <see langword="true"/> to delete all messages from the chat for the user that is being removed.
+        /// If <see langword="false"/>, the user will be able to see messages in the group that were sent before the user was removed.
+        /// Always <see langword="true"/> for supergroups and channels.
         /// </summary>
         [JsonPropertyName("revoke_messages")]
         public bool? RevokeMessages { get; set; }
@@ -65,7 +65,7 @@ namespace Flub.TelegramBot.Methods
         /// <summary>
         /// Use this method to ban a user in a group, a supergroup or a channel.
         /// In the case of supergroups and channels, the user will not be able to return to the chat on their own using invite links, etc., unless unbanned first.
-        /// The bot must be an administrator in the chat for this to work and must have the appropriate admin rights. Returns <see cref="true"/> on success.
+        /// The bot must be an administrator in the chat for this to work and must have the appropriate admin rights. Returns <see langword="true"/> on success.
         /// </summary>
         /// <param name="bot">The bot to send the request with.</param>
         /// <param name="chatId">Unique identifier for the target group or username of the target supergroup or channel (in the format @channelusername).</param>
@@ -76,9 +76,9 @@ namespace Flub.TelegramBot.Methods
         /// Applied for supergroups and channels only.
         /// </param>
         /// <param name="revokeMessages">
-        /// Pass <see cref="true"/> to delete all messages from the chat for the user that is being removed.
-        /// If <see cref="false"/>, the user will be able to see messages in the group that were sent before the user was removed.
-        /// Always <see cref="true"/> for supergroups and channels.
+        /// Pass <see langword="true"/> to delete all messages from the chat for the user that is being removed.
+        /// If <see langword="false"/>, the user will be able to see messages in the group that were sent before the user was removed.
+        /// Always <see langword="true"/> for supergroups and channels.
         /// </param>
         /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <returns>The task object representing the asynchronous operation.</returns>
@@ -99,7 +99,7 @@ namespace Flub.TelegramBot.Methods
         /// <summary>
         /// Use this method to ban a user in a group, a supergroup or a channel.
         /// In the case of supergroups and channels, the user will not be able to return to the chat on their own using invite links, etc., unless unbanned first.
-        /// The bot must be an administrator in the chat for this to work and must have the appropriate admin rights. Returns <see cref="true"/> on success.
+        /// The bot must be an administrator in the chat for this to work and must have the appropriate admin rights. Returns <see langword="true"/> on success.
         /// </summary>
         /// <param name="bot">The bot to send the request with.</param>
         /// <param name="chatId">Unique identifier for the target group or username of the target supergroup or channel (in the format @channelusername).</param>
@@ -110,9 +110,9 @@ namespace Flub.TelegramBot.Methods
         /// Applied for supergroups and channels only.
         /// </param>
         /// <param name="revokeMessages">
-        /// Pass <see cref="true"/> to delete all messages from the chat for the user that is being removed.
-        /// If <see cref="false"/>, the user will be able to see messages in the group that were sent before the user was removed.
-        /// Always <see cref="true"/> for supergroups and channels.
+        /// Pass <see langword="true"/> to delete all messages from the chat for the user that is being removed.
+        /// If <see langword="false"/>, the user will be able to see messages in the group that were sent before the user was removed.
+        /// Always <see langword="true"/> for supergroups and channels.
         /// </param>
         /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <returns>The task object representing the asynchronous operation.</returns>
@@ -133,7 +133,7 @@ namespace Flub.TelegramBot.Methods
         /// <summary>
         /// Use this method to ban a user in a group, a supergroup or a channel.
         /// In the case of supergroups and channels, the user will not be able to return to the chat on their own using invite links, etc., unless unbanned first.
-        /// The bot must be an administrator in the chat for this to work and must have the appropriate admin rights. Returns <see cref="true"/> on success.
+        /// The bot must be an administrator in the chat for this to work and must have the appropriate admin rights. Returns <see langword="true"/> on success.
         /// </summary>
         /// <param name="bot">The bot to send the request with.</param>
         /// <param name="chat">The target group.</param>
@@ -144,9 +144,9 @@ namespace Flub.TelegramBot.Methods
         /// Applied for supergroups and channels only.
         /// </param>
         /// <param name="revokeMessages">
-        /// Pass <see cref="true"/> to delete all messages from the chat for the user that is being removed.
-        /// If <see cref="false"/>, the user will be able to see messages in the group that were sent before the user was removed.
-        /// Always <see cref="true"/> for supergroups and channels.
+        /// Pass <see langword="true"/> to delete all messages from the chat for the user that is being removed.
+        /// If <see langword="false"/>, the user will be able to see messages in the group that were sent before the user was removed.
+        /// Always <see langword="true"/> for supergroups and channels.
         /// </param>
         /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <returns>The task object representing the asynchronous operation.</returns>

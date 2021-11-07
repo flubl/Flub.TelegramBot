@@ -17,5 +17,7 @@ namespace Flub.TelegramBot.Types
         /// </summary>
         [JsonPropertyName("voter_count")]
         public int? VoterCount { get; set; }
+
+        public override string ToString() => $"{nameof(PollOption)}[{Text}, {VoterCount} votes]";
     }
 }

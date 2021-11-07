@@ -17,5 +17,7 @@ namespace Flub.TelegramBot.Types
         /// </summary>
         [JsonPropertyName("description")]
         public string Description { get; set; }
+
+        public override string ToString() => $"{nameof(BotCommand)}[{Command}]";
     }
 }

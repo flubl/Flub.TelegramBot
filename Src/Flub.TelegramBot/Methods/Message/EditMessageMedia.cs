@@ -12,7 +12,7 @@ namespace Flub.TelegramBot.Methods
     /// If a message is part of a message album, then it can be edited only to an audio for audio albums,
     /// only to a document for document albums and to a photo or a video otherwise.
     /// When an inline message is edited, a new file can't be uploaded; use a previously uploaded file via its <see cref="InputFile.FileId"/> or specify a URL.
-    /// On success, if the edited message is not an inline message, the edited <see cref="Message"/> is returned, otherwise <see cref="true"/> is returned.
+    /// On success, if the edited message is not an inline message, the edited <see cref="Message"/> is returned, otherwise <see langword="true"/> is returned.
     /// </summary>
     public class EditMessageMedia<TResult> : MethodUpload<TResult>
     {
@@ -64,7 +64,7 @@ namespace Flub.TelegramBot.Methods
     /// If a message is part of a message album, then it can be edited only to an audio for audio albums,
     /// only to a document for document albums and to a photo or a video otherwise.
     /// When an inline message is edited, a new file can't be uploaded; use a previously uploaded file via its <see cref="InputFile.FileId"/> or specify a URL.
-    /// On success, <see cref="true"/> is returned.
+    /// On success, <see langword="true"/> is returned.
     /// </summary>
     public class EditInlineMessageMedia : EditMessageMedia<bool?>
     {
@@ -142,7 +142,7 @@ namespace Flub.TelegramBot.Methods
         /// If a message is part of a message album, then it can be edited only to an audio for audio albums,
         /// only to a document for document albums and to a photo or a video otherwise.
         /// When an inline message is edited, a new file can't be uploaded; use a previously uploaded file via its <see cref="InputFile.FileId"/> or specify a URL.
-        /// On success, <see cref="true"/> is returned.
+        /// On success, <see langword="true"/> is returned.
         /// </summary>
         /// <param name="bot">The bot to send the request with.</param>
         /// <param name="inlineMessageId">Identifier of the inline message.</param>
@@ -167,7 +167,7 @@ namespace Flub.TelegramBot.Methods
         /// If a message is part of a message album, then it can be edited only to an audio for audio albums,
         /// only to a document for document albums and to a photo or a video otherwise.
         /// When an inline message is edited, a new file can't be uploaded; use a previously uploaded file via its <see cref="InputFile.FileId"/> or specify a URL.
-        /// On success, <see cref="true"/> is returned.
+        /// On success, <see langword="true"/> is returned.
         /// </summary>
         /// <param name="bot">The bot to send the request with.</param>
         /// <param name="inlineMessage">The inline message.</param>

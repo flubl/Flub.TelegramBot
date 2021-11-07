@@ -3,7 +3,8 @@
 namespace Flub.TelegramBot.Types
 {
     /// <summary>
-    /// This object represents one button of the reply keyboard. For simple text buttons String can be used instead of this object to specify text of the button. Optional fields request_contact, request_location, and request_poll are mutually exclusive.
+    /// This object represents one button of the reply keyboard. For simple text buttons String can be used instead of this object to specify text of the button.
+    /// Optional fields <see cref="RequestContact"/>, <see cref="RequestLocation"/>, and <see cref="RequestPoll"/> are mutually exclusive.
     /// </summary>
     public class KeyboardButton
     {
@@ -13,12 +14,12 @@ namespace Flub.TelegramBot.Types
         [JsonPropertyName("text")]
         public string Text { get; set; }
         /// <summary>
-        /// Optional. If True, the user's phone number will be sent as a contact when the button is pressed. Available in private chats only.
+        /// Optional. If <see langword="true"/>, the user's phone number will be sent as a contact when the button is pressed. Available in private chats only.
         /// </summary>
-        [JsonPropertyName("request_context")]
-        public bool? RequestContext { get; set; }
+        [JsonPropertyName("request_contact")]
+        public bool? RequestContact { get; set; }
         /// <summary>
-        /// Optional. If True, the user's current location will be sent when the button is pressed. Available in private chats only.
+        /// Optional. If <see langword="true"/>, the user's current location will be sent when the button is pressed. Available in private chats only.
         /// </summary>
         [JsonPropertyName("request_location")]
         public bool? RequestLocation { get; set; }
@@ -27,5 +28,9 @@ namespace Flub.TelegramBot.Types
         /// </summary>
         [JsonPropertyName("request_poll")]
         public KeyboardButtonPollType RequestPoll { get; set; }
+
+        public override string ToString() => $"{nameof(KeyboardButton)}[{Text}]";
+
+        public static implicit operator KeyboardButton(string text) => new() { Text = text };
     }
 }

@@ -15,16 +15,10 @@ namespace Flub.TelegramBot.Types
         [JsonPropertyName("chat_id")]
         public string ChatId { get; set; }
 
-        protected BotCommandScopeChat(BotCommandScopeType type)
-            : base(type)
-        {
+        protected BotCommandScopeChat(BotCommandScopeType type) : base(type) { }
 
-        }
+        public BotCommandScopeChat() : this(BotCommandScopeType.Chat) { }
 
-        public BotCommandScopeChat()
-            : this(BotCommandScopeType.Chat)
-        {
-
-        }
+        public override string ToString() => $"{nameof(BotCommandScopeChat)}[{ChatId}]";
     }
 }

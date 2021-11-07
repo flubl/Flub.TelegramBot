@@ -22,5 +22,7 @@ namespace Flub.TelegramBot.Types
         /// </summary>
         [JsonPropertyName("distance")]
         public int? Distance { get; set; }
+
+        public override string ToString() => $"{nameof(ProximityAlertTriggered)}[by {Traveler} for {Watcher}, {Distance}]";
     }
 }

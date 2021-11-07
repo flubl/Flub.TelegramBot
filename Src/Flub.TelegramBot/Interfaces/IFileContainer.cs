@@ -8,7 +8,7 @@ namespace Flub.TelegramBot
     public interface IFileContainer
     {
         /// <summary>
-        /// True if there are files to be uploaded.
+        /// <see langword="true"/> if there are files to be uploaded.
         /// </summary>
         bool HasFiles { get; }
         /// <summary>

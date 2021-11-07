@@ -9,7 +9,7 @@ namespace Flub.TelegramBot.Methods
 {
     /// <summary>
     /// Use this method to send answers to an inline query.
-    /// On success, <see cref="true"/> is returned.
+    /// On success, <see langword="true"/> is returned.
     /// No more than 50 results per query are allowed.
     /// </summary>
     public class AnswerInlineQuery : Method<bool?>
@@ -32,7 +32,7 @@ namespace Flub.TelegramBot.Methods
         [JsonPropertyName("cache_time")]
         public int? CacheTime { get; set; }
         /// <summary>
-        /// Pass <see cref="true"/>, if results may be cached on the server side only for the user that sent the query.
+        /// Pass <see langword="true"/>, if results may be cached on the server side only for the user that sent the query.
         /// By default, results may be returned to any user who sends the same query.
         /// </summary>
         [JsonPropertyName("is_personal")]
@@ -68,7 +68,7 @@ namespace Flub.TelegramBot.Methods
 
         /// <summary>
         /// Use this method to send answers to an inline query.
-        /// On success, <see cref="true"/> is returned.
+        /// On success, <see langword="true"/> is returned.
         /// No more than 50 results per query are allowed.
         /// </summary>
         /// <param name="bot">The bot to send the request with.</param>
@@ -76,7 +76,7 @@ namespace Flub.TelegramBot.Methods
         /// <param name="results">A <see cref="InlineQueryResult"/> list of results for the inline query.</param>
         /// <param name="cacheTime">The maximum amount of time in seconds that the result of the inline query may be cached on the server. Defaults to 300.</param>
         /// <param name="isPersonal">
-        /// Pass <see cref="true"/>, if results may be cached on the server side only for the user that sent the query.
+        /// Pass <see langword="true"/>, if results may be cached on the server side only for the user that sent the query.
         /// By default, results may be returned to any user who sends the same query.
         /// </param>
         /// <param name="nextOffset">
@@ -112,7 +112,7 @@ namespace Flub.TelegramBot.Methods
 
         /// <summary>
         /// Use this method to send answers to an inline query.
-        /// On success, <see cref="true"/> is returned.
+        /// On success, <see langword="true"/> is returned.
         /// No more than 50 results per query are allowed.
         /// </summary>
         /// <param name="bot">The bot to send the request with.</param>
@@ -120,7 +120,7 @@ namespace Flub.TelegramBot.Methods
         /// <param name="results">A <see cref="InlineQueryResult"/> list of results for the inline query.</param>
         /// <param name="cacheTime">The maximum amount of time in seconds that the result of the inline query may be cached on the server. Defaults to 300.</param>
         /// <param name="isPersonal">
-        /// Pass <see cref="true"/>, if results may be cached on the server side only for the user that sent the query.
+        /// Pass <see langword="true"/>, if results may be cached on the server side only for the user that sent the query.
         /// By default, results may be returned to any user who sends the same query.
         /// </param>
         /// <param name="nextOffset">

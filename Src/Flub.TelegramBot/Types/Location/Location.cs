@@ -23,7 +23,7 @@ namespace Flub.TelegramBot.Types
         [JsonPropertyName("horizontal_accuracy")]
         public float? HorizontalAccuracy { get; set; }
         /// <summary>
-        /// Optional. Time relative to the message sending date, during which the location can be updated, in seconds.For active live locations only.
+        /// Optional. Time relative to the message sending date, during which the location can be updated, in seconds. For active live locations only.
         /// </summary>
         [JsonPropertyName("live_period")]
         public int? LivePeriod { get; set; }
@@ -37,5 +37,7 @@ namespace Flub.TelegramBot.Types
         /// </summary>
         [JsonPropertyName("proximity_alert_radius")]
         public int? ProximityAlertRadius { get; set; }
+
+        public override string ToString() => $"{nameof(Location)}[lon: {Longitude}, lat: {Latitude}]";
     }
 }

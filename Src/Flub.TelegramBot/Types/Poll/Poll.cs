@@ -1,6 +1,7 @@
 ﻿using Flub.Utils.Json;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text.Json.Serialization;
 
 namespace Flub.TelegramBot.Types
@@ -41,7 +42,7 @@ namespace Flub.TelegramBot.Types
         [JsonPropertyName("is_anonymous")]
         public bool? IsAnonymous { get; set; }
         /// <summary>
-        /// Poll type, currently can be “regular” or “quiz”.
+        /// Poll type, currently can be "regular" or "quiz".
         /// </summary>
         [JsonPropertyName("type")]
         public PollType? Type { get; set; }
@@ -84,13 +85,15 @@ namespace Flub.TelegramBot.Types
             get => CloseDateValue.HasValue ? DateTimeOffset.FromUnixTimeSeconds(CloseDateValue.Value).DateTime : null;
             set => CloseDateValue = value.HasValue ? new DateTimeOffset(value.Value).ToUnixTimeSeconds() : null;
         }
+
+        public override string ToString() => $"{nameof(Poll)}[{Id}, {Options.Count()} options, {TotalVoterCount} votes]";
     }
 
     /// <summary>
-    /// Poll type, currently can be “regular” or “quiz”.
+    /// Poll type, currently can be "regular" or "quiz".
     /// </summary>
     [Flags]
-    [JsonConverter(typeof(JsonFieldEnumConverter<PollType>))]
+    [JsonConverter(typeof(JsonFieldEnumConverter))]
     public enum PollType : int
     {
         [JsonIgnore]

@@ -50,10 +50,12 @@ namespace Flub.TelegramBot.Types
         [JsonPropertyName("callback_game")]
         public CallbackGame CallbackGame { get; set; }
         /// <summary>
-        /// Optional. Specify <see cref="true"/>, to send a <see cref="Payments">Pay button</see>.
+        /// Optional. Specify <see langword="true"/>, to send a <see cref="Payments">Pay button</see>.
         /// NOTE: This type of button must always be the first button in the first row.
         /// </summary>
         [JsonPropertyName("pay")]
         public bool? Pay { get; set; }
+
+        public override string ToString() => $"{nameof(InlineKeyboardButton)}[{Text}]";
     }
 }

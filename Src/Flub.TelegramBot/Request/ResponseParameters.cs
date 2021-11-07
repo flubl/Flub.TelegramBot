@@ -17,5 +17,7 @@ namespace Flub.TelegramBot
         /// </summary>
         [JsonPropertyName("retry_after")]
         public int? RetryAfter { get; set; }
+
+        public override string ToString() => nameof(ResponseParameters);
     }
 }

@@ -10,7 +10,7 @@ namespace Flub.TelegramBot.Types
     public class ChatMemberOwner : ChatMemberMember
     {
         /// <summary>
-        /// True, if the user's presence in the chat is hidden.
+        /// <see langword="true"/>, if the user's presence in the chat is hidden.
         /// </summary>
         [JsonPropertyName("is_anonymous")]
         public bool? IsAnonymous { get; set; }
@@ -24,19 +24,13 @@ namespace Flub.TelegramBot.Types
         /// Initializes a new instance of <see cref="ChatMemberOwner"/> with the specified status.
         /// </summary>
         /// <param name="status">The member's status in the chat.</param>
-        protected ChatMemberOwner(ChatMemberStatus status)
-            : base(status)
-        {
-
-        }
+        protected ChatMemberOwner(ChatMemberStatus status) : base(status) { }
 
         /// <summary>
         /// Initializes a new instance of <see cref="ChatMemberOwner"/> with the <see cref="ChatMemberStatus.Creator"/> status.
         /// </summary>
-        public ChatMemberOwner()
-            : this(ChatMemberStatus.Creator)
-        {
+        public ChatMemberOwner() : this(ChatMemberStatus.Creator) { }
 
-        }
+        public override string ToString() => $"{nameof(ChatMemberOwner)}[{User}{(IsAnonymous == true ? ", hidden" : null)}]";
     }
 }

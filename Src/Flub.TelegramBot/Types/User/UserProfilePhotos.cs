@@ -18,5 +18,7 @@ namespace Flub.TelegramBot.Types
         /// </summary>
         [JsonPropertyName("photos")]
         public IEnumerable<IEnumerable<PhotoSize>> Photos { get; set; }
+
+        public override string ToString() => $"{nameof(UserProfilePhotos)}[{TotalCount} photos]";
     }
 }

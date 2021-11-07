@@ -40,7 +40,7 @@ namespace Flub.TelegramBot
             .Where(p => p.SouldNotBeIgnored(p.GetValue(this), options))
             .ToImmutableDictionary(p => p.GetCustomAttribute<JsonPropertyNameAttribute>()?.Name ?? p.Name, p => p.GetValue(this));
 
-        public override string ToString() => base.ToString();
+        public override string ToString() => $"{nameof(Method<TResult>)}[{Name}, {typeof(TResult).Name}]";
     }
 
     /// <summary>

@@ -1,7 +1,9 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Options;
 using System.Reflection;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using System.Linq;
 
 namespace Flub.TelegramBot
 {
@@ -26,9 +28,11 @@ namespace Flub.TelegramBot
         /// <returns>A reference to this instance after the operation has completed.</returns>
         public static IServiceCollection AddTelegramBot<TTelegramBot>(this IServiceCollection services) where TTelegramBot : TelegramBot
         {
-            services.AddOptions<TelegramBotOptions>().BindConfiguration(TelegramBotOptions.Position).ValidateDataAnnotations();
+            if (!services.Any(i => i.ServiceType == typeof(IConfigureOptions<TelegramBotOptions>)))
+                services.AddOptions<TelegramBotOptions>().BindConfiguration(TelegramBotOptions.Position).ValidateDataAnnotations();
             services.AddHttpClient();
-            services.AddScoped<TTelegramBot>();
+            if (!services.Any(i => i.ImplementationType == typeof(TTelegramBot)))
+                services.AddScoped<TTelegramBot>();
             return services;
         }
 
@@ -50,7 +54,7 @@ namespace Flub.TelegramBot
         /// </summary>
         /// <param name="condition">The <see cref="JsonIgnoreCondition"/> if the <paramref name="value"/> should be ignored.</param>
         /// <param name="value">The value to be checked with the <paramref name="condition"/>.</param>
-        /// <returns>Returns <see cref="true"/> if the value should not be ignored.</returns>
+        /// <returns>Returns <see langword="true"/> if the value should not be ignored.</returns>
         public static bool ShouldNotIgnore(this JsonIgnoreCondition condition, object value) => condition == JsonIgnoreCondition.Never
             || (condition == JsonIgnoreCondition.WhenWritingDefault && !Equals(value, default))
             || (condition == JsonIgnoreCondition.WhenWritingNull && !Equals(value, null));
@@ -62,7 +66,7 @@ namespace Flub.TelegramBot
         /// <param name="value">The value to be checkd with the condition.</param>
         /// <param name="options">Optional <see cref="JsonSerializerOptions"/> to get a condition from.</param>
         /// <param name="defaultCondition">The default <see cref="JsonIgnoreCondition"/> used if no condition is specified.</param>
-        /// <returns>Returns <see cref="true"/> if the value should not be ignored.</returns>
+        /// <returns>Returns <see langword="true"/> if the value should not be ignored.</returns>
         public static bool SouldNotBeIgnored(this MemberInfo element, object value, JsonSerializerOptions options = null, JsonIgnoreCondition defaultCondition = JsonIgnoreCondition.Never) =>
             ShouldNotIgnore(GetJsonIgnoreCondition(element, options, defaultCondition), value);
 

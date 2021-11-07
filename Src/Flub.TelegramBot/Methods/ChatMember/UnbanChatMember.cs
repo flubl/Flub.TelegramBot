@@ -11,7 +11,7 @@ namespace Flub.TelegramBot.Methods
     /// The bot must be an administrator for this to work.
     /// By default, this method guarantees that after the call the user is not a member of the chat, but will be able to join it.
     /// So if the user is a member of the chat they will also be removed from the chat. If you don't want this, use the parameter <see cref="OnlyIfBanned"/>.
-    /// Returns <see cref="true"/> on success.
+    /// Returns <see langword="true"/> on success.
     /// </summary>
     public class UnbanChatMember : Method<bool?>
     {
@@ -50,7 +50,7 @@ namespace Flub.TelegramBot.Methods
         /// The bot must be an administrator for this to work.
         /// By default, this method guarantees that after the call the user is not a member of the chat, but will be able to join it.
         /// So if the user is a member of the chat they will also be removed from the chat. If you don't want this, use the parameter <see cref="OnlyIfBanned"/>.
-        /// Returns <see cref="true"/> on success.
+        /// Returns <see langword="true"/> on success.
         /// </summary>
         /// <param name="bot">The bot to send the request with.</param>
         /// <param name="chatId">Unique identifier for the target group or username of the target supergroup or channel (in the format @username).</param>
@@ -76,7 +76,7 @@ namespace Flub.TelegramBot.Methods
         /// The bot must be an administrator for this to work.
         /// By default, this method guarantees that after the call the user is not a member of the chat, but will be able to join it.
         /// So if the user is a member of the chat they will also be removed from the chat. If you don't want this, use the parameter <see cref="OnlyIfBanned"/>.
-        /// Returns <see cref="true"/> on success.
+        /// Returns <see langword="true"/> on success.
         /// </summary>
         /// <param name="bot">The bot to send the request with.</param>
         /// <param name="chat">The target group.</param>

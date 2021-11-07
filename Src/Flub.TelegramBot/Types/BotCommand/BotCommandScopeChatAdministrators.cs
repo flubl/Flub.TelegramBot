@@ -8,10 +8,8 @@ namespace Flub.TelegramBot.Types
     [JsonTyped(BotCommandScopeType.ChatAdministrators)]
     public class BotCommandScopeChatAdministrators : BotCommandScopeChat
     {
-        public BotCommandScopeChatAdministrators()
-            : base(BotCommandScopeType.ChatAdministrators)
-        {
+        public BotCommandScopeChatAdministrators() : base(BotCommandScopeType.ChatAdministrators) { }
 
-        }
+        public override string ToString() => $"{nameof(BotCommandScopeChatAdministrators)}[{ChatId}]";
     }
 }

@@ -8,7 +8,7 @@ namespace Flub.TelegramBot
     public abstract class Response
     {
         /// <summary>
-        /// True, if the request was successful.
+        /// <see langword="true"/>, if the request was successful.
         /// </summary>
         [JsonPropertyName("ok")]
         public bool? Ok { get; set; }
@@ -27,6 +27,8 @@ namespace Flub.TelegramBot
         /// </summary>
         [JsonPropertyName("parameters")]
         public ResponseParameters Parameters { get; set; }
+
+        public override string ToString() => $"{nameof(Response)}[{(Ok == true ? "Ok" : $"{ErrorCode}: {Description}")}]";
     }
 
     /// <summary>

@@ -36,5 +36,7 @@ namespace Flub.TelegramBot.Types
         /// </summary>
         [JsonPropertyName("query")]
         public string Query { get; set; }
+
+        public override string ToString() => $"{nameof(ChosenInlineResult)}[{ResultId}, {Query}, {From}]";
     }
 }

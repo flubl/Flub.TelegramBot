@@ -23,5 +23,7 @@ namespace Flub.TelegramBot.Types
         /// </summary>
         [JsonPropertyName("poll_id")]
         public IEnumerable<int> OptionIds { get; set; }
+
+        public override string ToString() => $"{nameof(PollAnswer)}[{PollId}, {User} selected [{string.Join(", ", OptionIds)}]]";
     }
 }

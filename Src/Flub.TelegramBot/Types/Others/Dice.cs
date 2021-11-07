@@ -15,18 +15,20 @@ namespace Flub.TelegramBot.Types
         [JsonPropertyName("emoji")]
         public DiceType? Emoji { get; set; }
         /// <summary>
-        /// Value of the dice, 1-6 for <see cref="DiceType.Dice"/> “🎲”, <see cref="DiceType.BullsEye"/> “🎯” and <see cref="DiceType.Bowling"/> “🎳” base emoji, 
-        /// 1-5 for <see cref="DiceType.Basketball"/> “🏀” and <see cref="DiceType.Football"/> “⚽” base emoji, 1-64 for <see cref="DiceType.SlotMachine"/> “🎰” base emoji.
+        /// Value of the dice, 1-6 for <see cref="DiceType.Dice"/> "🎲", <see cref="DiceType.BullsEye"/> "🎯" and <see cref="DiceType.Bowling"/> "🎳" base emoji, 
+        /// 1-5 for <see cref="DiceType.Basketball"/> "🏀" and <see cref="DiceType.Football"/> "⚽" base emoji, 1-64 for <see cref="DiceType.SlotMachine"/> "🎰" base emoji.
         /// </summary>
         [JsonPropertyName("value")]
         public int? Value { get; set; }
+
+        public override string ToString() => $"{nameof(Dice)}[{Emoji}, {Value}]";
     }
 
     /// <summary>
-    /// Emoji on which the dice throw animation is based. Currently, must be one of “🎲”, “🎯”, “🏀”, “⚽”, “🎳”, or “🎰”.
+    /// Emoji on which the dice throw animation is based. Currently, must be one of "🎲", "🎯", "🏀", "⚽", "🎳", or "🎰".
     /// </summary>
     [Flags]
-    [JsonConverter(typeof(JsonFieldEnumConverter<DiceType>))]
+    [JsonConverter(typeof(JsonFieldEnumConverter))]
     public enum DiceType : int
     {
         [JsonIgnore]

@@ -9,7 +9,7 @@ namespace Flub.TelegramBot.Methods
     /// <summary>
     /// Use this method to set default chat permissions for all members.
     /// The bot must be an administrator in the group or a supergroup for this to work and must have the <see cref="ChatMemberAdministrator.CanRestrictMembers"/> admin rights.
-    /// Returns <see cref="true"/> on success.
+    /// Returns <see langword="true"/> on success.
     /// </summary>
     public class SetChatPermissions : Method<bool?>
     {
@@ -40,7 +40,7 @@ namespace Flub.TelegramBot.Methods
         /// <summary>
         /// Use this method to set default chat permissions for all members.
         /// The bot must be an administrator in the group or a supergroup for this to work and must have the <see cref="ChatMemberAdministrator.CanRestrictMembers"/> admin rights.
-        /// Returns <see cref="true"/> on success.
+        /// Returns <see langword="true"/> on success.
         /// </summary>
         /// <param name="bot">The bot to send the request with.</param>
         /// <param name="chatId">Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername).</param>
@@ -60,7 +60,7 @@ namespace Flub.TelegramBot.Methods
         /// <summary>
         /// Use this method to set default chat permissions for all members.
         /// The bot must be an administrator in the group or a supergroup for this to work and must have the <see cref="ChatMemberAdministrator.CanRestrictMembers"/> admin rights.
-        /// Returns <see cref="true"/> on success.
+        /// Returns <see langword="true"/> on success.
         /// </summary>
         /// <param name="bot">The bot to send the request with.</param>
         /// <param name="chat">The target chat.</param>

@@ -22,5 +22,7 @@ namespace Flub.TelegramBot.Types
         /// </summary>
         [JsonPropertyName("mime_type")]
         public string MimeType { get; set; }
+
+        public override string ToString() => $"{nameof(Document)}[{Id}]";
     }
 }

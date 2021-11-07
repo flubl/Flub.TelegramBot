@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Text.Json.Serialization;
 
 namespace Flub.TelegramBot.Types
@@ -13,5 +14,7 @@ namespace Flub.TelegramBot.Types
         /// </summary>
         [JsonPropertyName("users")]
         public IEnumerable<User> Users { get; set; }
+
+        public override string ToString() => $"{nameof(VoiceChatParticipantsInvited)}[{Users.Count()} users]";
     }
 }

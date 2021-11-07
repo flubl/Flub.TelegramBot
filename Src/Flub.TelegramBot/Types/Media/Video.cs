@@ -22,5 +22,7 @@ namespace Flub.TelegramBot.Types
         /// </summary>
         [JsonPropertyName("duration")]
 		public int? Duration { get; set; }
+
+        public override string ToString() => $"{nameof(Video)}[{Width}x{Height}, {Duration}s, {Id}]";
     }
 }

@@ -4,7 +4,7 @@ using System.Text.Json.Serialization;
 namespace Flub.TelegramBot.Authentication
 {
     /// <summary>
-    /// Contains data about a user. The integrity can be verified with the <see cref="TelegramBot.Validate"/> method.
+    /// Contains data about a user. The integrity can be verified with the <see cref="TelegramBot.Validate(IAuthenticationData, TimeSpan?, bool)"/> method.
     /// See <see href="https://core.telegram.org/widgets/login">Telegram Login Widget</see> for more informations.
     /// </summary>
     public class UserAuthenticationData : AuthenticationData, IUser

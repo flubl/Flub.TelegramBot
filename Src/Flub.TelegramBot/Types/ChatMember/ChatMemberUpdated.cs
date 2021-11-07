@@ -47,5 +47,7 @@ namespace Flub.TelegramBot.Types
         /// </summary>
         [JsonPropertyName("invite_link")]
         public ChatInviteLink InviteLink { get; set; }
+
+        public override string ToString() => $"{nameof(ChatMemberUpdated)}[{Chat}, {From}, {Date}]";
     }
 }

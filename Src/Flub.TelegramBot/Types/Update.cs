@@ -1,6 +1,8 @@
 ﻿using Flub.Utils.Json;
 using System;
 using System.Collections.Generic;
+using System.Collections.Immutable;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Reflection;
 using System.Text.Json.Serialization;
@@ -14,8 +16,11 @@ namespace Flub.TelegramBot.Types
     public class Update
     {
         /// <summary>
-        /// The update's unique identifier. Update identifiers start from a certain positive number and increase sequentially. This ID becomes especially handy if you're using Webhooks, since it allows you to ignore repeated updates or to restore the correct update sequence, should they get out of order. If there are no new updates for at least a week, then identifier of the next update will be chosen randomly instead of sequentially.
+        /// The update's unique identifier. Update identifiers start from a certain positive number and increase sequentially.
+        /// This ID becomes especially handy if you're using Webhooks, since it allows you to ignore repeated updates or to restore the correct update sequence, should they get out of order.
+        /// If there are no new updates for at least a week, then identifier of the next update will be chosen randomly instead of sequentially.
         /// </summary>
+        [Required]
         [JsonPropertyName("update_id")]
         public int? Id { get; set; }
         /// <summary>
@@ -49,7 +54,9 @@ namespace Flub.TelegramBot.Types
         [UpdateType(UpdateType.InlineQuery)]
         public InlineQuery InlineQuery { get; set; }
         /// <summary>
-        /// Optional. The result of an inline query that was chosen by a user and sent to their chat partner. Please see the documentation on the <see href="https://core.telegram.org/bots/inline#collecting-feedback">feedback collecting</see> for details on how to enable these updates for your bot.
+        /// Optional. The result of an inline query that was chosen by a user and sent to their chat partner.
+        /// Please see the documentation on the <see href="https://core.telegram.org/bots/inline#collecting-feedback">feedback collecting</see> for details
+        /// on how to enable these updates for your bot.
         /// </summary>
         [JsonPropertyName("chosen_inline_result")]
         [UpdateType(UpdateType.ChosenInlineResult)]
@@ -60,18 +67,18 @@ namespace Flub.TelegramBot.Types
         [JsonPropertyName("callback_query")]
         [UpdateType(UpdateType.CallbackQuery)]
         public CallbackQuery CallbackQuery { get; set; }
-        ///// <summary>
-        ///// Optional. New incoming shipping query. Only for invoices with flexible price.
-        ///// </summary>
-        //[JsonPropertyName("shipping_query")]
-        //[UpdateType(UpdateType.ShippingQuery)]
-        //public ShippingQuery ShippingQuery { get; set; }
-        ///// <summary>
-        ///// Optional. New incoming pre-checkout query. Contains full information about checkout.
-        ///// </summary>
-        //[JsonPropertyName("pre_checkout_query")]
-        //[UpdateType(UpdateType.PreCheckoutQuery)]
-        //public PreCheckoutQuery PreCheckoutQuery { get; set; }
+        /// <summary>
+        /// Optional. New incoming shipping query. Only for invoices with flexible price.
+        /// </summary>
+        [JsonPropertyName("shipping_query")]
+        [UpdateType(UpdateType.ShippingQuery)]
+        public ShippingQuery ShippingQuery { get; set; }
+        /// <summary>
+        /// Optional. New incoming pre-checkout query. Contains full information about checkout.
+        /// </summary>
+        [JsonPropertyName("pre_checkout_query")]
+        [UpdateType(UpdateType.PreCheckoutQuery)]
+        public PreCheckoutQuery PreCheckoutQuery { get; set; }
         /// <summary>
         /// Optional. New poll state. Bots receive only updates about stopped polls and polls, which are sent by the bot.
         /// </summary>
@@ -91,20 +98,31 @@ namespace Flub.TelegramBot.Types
         [UpdateType(UpdateType.MyChatMember)]
         public ChatMemberUpdated MyChatMember { get; set; }
         /// <summary>
-        /// Optional. A chat member's status was updated in a chat. The bot must be an administrator in the chat and must explicitly specify <see cref="UpdateType.ChatMember"/> in the list of allowed_updates to receive these updates.
+        /// Optional. A chat member's status was updated in a chat.
+        /// The bot must be an administrator in the chat and must explicitly specify <see cref="UpdateType.ChatMember"/>
+        /// in the list of <see cref="Methods.GetUpdates.AllowedUpdates"/> or <see cref="Methods.SetWebhook.AllowedUpdates"/> to receive these updates.
         /// </summary>
         [JsonPropertyName("chat_member")]
         [UpdateType(UpdateType.ChatMember)]
         public ChatMemberUpdated ChatMember { get; set; }
 
+        public override string ToString() => $"{nameof(Update)}[{Id}]";
+
+        private static readonly ImmutableDictionary<PropertyInfo, UpdateType> properties = typeof(Update).GetProperties()
+            .Select(p => new KeyValuePair<PropertyInfo, UpdateType>(p, p.GetCustomAttribute<UpdateTypeAttribute>()?.Value ?? UpdateType.None))
+            .Where(i => i.Value is not UpdateType.None)
+            .ToImmutableDictionary(i => i.Key, i => i.Value);
+
+        /// <summary>
+        /// List of available <see cref="UpdateType"/> and its associated value in this update.
+        /// </summary>
         [JsonIgnore]
-        public IEnumerable<UpdateType> Types => typeof(Update).GetProperties()
-            .ToDictionary(p => p, p => p.GetCustomAttribute<UpdateTypeAttribute>())
-            .Where(i => i.Value is not null && i.Key.GetValue(this) is not null)
-            .Select(i => i.Value.Value);
+        public IEnumerable<KeyValuePair<UpdateType, object>> Types => properties
+            .Select(i => new KeyValuePair<UpdateType, object>(i.Value, i.Key.GetValue(this)))
+            .Where(i => i.Value is not null);
 
         [AttributeUsage(AttributeTargets.Property, AllowMultiple = false)]
-        private class UpdateTypeAttribute : Attribute
+        private sealed class UpdateTypeAttribute : Attribute
         {
             public UpdateType Value { get; }
 
@@ -119,7 +137,7 @@ namespace Flub.TelegramBot.Types
     /// Available update types.
     /// </summary>
     [Flags]
-    [JsonConverter(typeof(JsonFieldEnumConverter<UpdateType>))]
+    [JsonConverter(typeof(JsonFieldEnumConverter))]
     public enum UpdateType : int
     {
         [JsonIgnore]

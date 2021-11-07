@@ -22,5 +22,7 @@ namespace Flub.TelegramBot.Types
 		/// </summary>
 		[JsonPropertyName("thumb")]
 		public PhotoSize Thumb { get; set; }
+
+		public override string ToString() => $"{nameof(VideoNote)}[{Length}, {Duration}s, {Id}]";
     }
 }

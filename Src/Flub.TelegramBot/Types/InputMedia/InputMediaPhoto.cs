@@ -28,19 +28,13 @@ namespace Flub.TelegramBot.Types
         /// Initializes a new instance of the <see cref="InputMediaPhoto"/> class with a specified type.
         /// </summary>
         /// <param name="type">The type of the media.</param>
-        protected InputMediaPhoto(InputMediaType type)
-            : base(type)
-        {
-
-        }
+        protected InputMediaPhoto(InputMediaType type) : base(type) { }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="InputMediaPhoto"/> class.
         /// </summary>
-        public InputMediaPhoto()
-            : this(InputMediaType.Photo)
-        {
+        public InputMediaPhoto() : this(InputMediaType.Photo) { }
 
-        }
+        public override string ToString() => $"{nameof(InputMediaPhoto)}[{Media}]";
     }
 }

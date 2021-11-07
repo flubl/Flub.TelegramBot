@@ -8,7 +8,7 @@ namespace Flub.TelegramBot.Types
     public class InputMediaDocument : InputMediaWithThumb
     {
         /// <summary>
-        /// Optional. Disables automatic server-side content type detection for files uploaded. Always true, if the document is sent as part of an album.
+        /// Optional. Disables automatic server-side content type detection for files uploaded. Always <see langword="true"/>, if the document is sent as part of an album.
         /// </summary>
         [JsonPropertyName("disable_content_type_detection")]
         public bool? DisableContentTypeDetection { get; set; }
@@ -16,10 +16,8 @@ namespace Flub.TelegramBot.Types
         /// <summary>
         /// Initializes a new instance of the <see cref="InputMediaDocument"/> class.
         /// </summary>
-        public InputMediaDocument()
-            : base(InputMediaType.Document)
-        {
+        public InputMediaDocument() : base(InputMediaType.Document) { }
 
-        }
+        public override string ToString() => $"{nameof(InputMediaDocument)}[{Media}]";
     }
 }

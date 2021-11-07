@@ -25,7 +25,7 @@ namespace Flub.TelegramBot.Types
             set => UntilDateValue = value.HasValue && new DateTimeOffset(value.Value).ToUnixTimeSeconds() is long l && l > 0 ? l : null;
         }
         /// <summary>
-        /// True, if the user is banned forever.
+        /// <see langword="true"/>, if the user is banned forever.
         /// </summary>
         [JsonIgnore]
         public bool? IsForever
@@ -37,10 +37,8 @@ namespace Flub.TelegramBot.Types
         /// <summary>
         /// Initializes a new instance of <see cref="ChatMemberBanned"/> with the <see cref="ChatMemberStatus.Kicked"/> status.
         /// </summary>
-        public ChatMemberBanned()
-            : base(ChatMemberStatus.Kicked)
-        {
+        public ChatMemberBanned() : base(ChatMemberStatus.Kicked) { }
 
-        }
+        public override string ToString() => $"{nameof(ChatMemberBanned)}[{User}, until {UntilDate}]";
     }
 }

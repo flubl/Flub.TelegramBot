@@ -10,9 +10,9 @@ namespace Flub.TelegramBot
     /// <summary>
     /// This object represents the contents of a file to be uploaded.
     /// There are three ways to send files (photos, stickers, audio, media, etc.):
-    /// If the file is already stored somewhere on the Telegram servers, you don't need to reupload it: each file object has a file_id field, simply pass this file_id as a parameter instead of uploading. There are no limits for files sent this way.
-    /// Provide Telegram with an HTTP URL for the file to be sent.Telegram will download and send the file. 5 MB max size for photos and 20 MB max for other types of content.
-    /// Post the file using multipart/form-data in the usual way that files are uploaded via the browser. 10 MB max size for photos, 50 MB for other files.
+    /// Use <see cref="FileId"/> to send a file that exists on the Telegram servers.
+    /// Use <see cref="Url"/> to let Telegram get a file from the Internet (5 MB max size for photos and 20 MB max for other types of content).
+    /// Use <see cref="File"/> to upload a new File (10 MB max size for photos, 50 MB for other files).
     /// </summary>
     [JsonConverter(typeof(JsonInputFileConverter))]
     public class InputFile : IFile
@@ -33,21 +33,25 @@ namespace Flub.TelegramBot
         [JsonIgnore]
         public string FileId { get; set; }
         /// <summary>
-        /// True, if <see cref="File"/> is set and is valid.
+        /// <see langword="true"/>, if <see cref="File"/> is set and is valid.
         /// </summary>
         [JsonIgnore]
         public bool IsFile => File?.Valid ?? false;
+        private string Value => FileId ?? Url?.ToString() ?? File?.AttachValue;
 
         string IFile.Id => FileId;
 
         /// <summary>
-        /// Ensures that only one parameter is set. Throws an <see cref="TelegramBotException"/> otherwise.
+        /// Ensures that only one parameter is set.
         /// </summary>
+        /// <exception cref="TelegramBotException"></exception>
         public void EnsureSinglePropertyIsSet()
         {
             if (((IsFile ? 1 : 0) + (Url is null ? 0 : 1) + (FileId is null ? 0 : 1)) != 1)
                 throw new TelegramBotException("The input file contains no or more than one properties.");
         }
+
+        public override string ToString() => $"{nameof(InputFile)}[{Value}]";
 
         /// <summary>
         /// Initializes a new instance of the <see cref="InputFile"/> class from the specified fileinfo and sets <see cref="File"/>.
@@ -108,7 +112,7 @@ namespace Flub.TelegramBot
             public override void Write(Utf8JsonWriter writer, InputFile value, JsonSerializerOptions options)
             {
                 value.EnsureSinglePropertyIsSet();
-                writer.WriteStringValue(value.FileId ?? value.Url?.ToString() ?? value.File?.AttachValue);
+                writer.WriteStringValue(value.Value);
             }
         }
 
@@ -144,7 +148,7 @@ namespace Flub.TelegramBot
             public Stream Stream { get; set; }
 
             /// <summary>
-            /// True, if the stream and name is set.
+            /// <see langword="true"/>, if the stream and name is set.
             /// </summary>
             [JsonIgnore]
             public bool Valid => Stream is not null && !string.IsNullOrEmpty(Name);

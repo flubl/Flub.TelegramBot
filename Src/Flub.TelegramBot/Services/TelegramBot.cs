@@ -98,13 +98,16 @@ namespace Flub.TelegramBot
                 }
                 else
                     request.Content = JsonContent.Create(method, method.GetType(), options: options);
+                logger?.LogInformation($"Sending Request: {method.Name}, {request.Method}, {request.Content.Headers.ContentType}");
                 using HttpResponseMessage message = await client.SendAsync(request, cancellationToken);
+                logger?.LogInformation($"Response Received: {method.Name}, {(int)message.StatusCode} {message.StatusCode}");
                 response = await message.Content.ReadFromJsonAsync<Response<TResult>>(options, cancellationToken);
                 message.EnsureSuccessStatusCode();
                 return response.Result;
             }
             catch (HttpRequestException exc)
             {
+                logger?.LogError(exc, $"Request Failed: {method.Name}, {response?.Description}");
                 if (response != null)
                     throw new TelegramBotRequestException(method, response, "Request of method was not successful.", exc);
                 throw;

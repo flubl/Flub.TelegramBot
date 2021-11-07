@@ -23,10 +23,8 @@ namespace Flub.TelegramBot.Types
         /// Initializes a new instance of the <see cref="InputMediaWithThumb"/> class with a specified type.
         /// </summary>
         /// <param name="type">The type of the media.</param>
-        protected InputMediaWithThumb(InputMediaType type)
-            : base(type)
-        {
+        protected InputMediaWithThumb(InputMediaType type) : base(type) { }
 
-        }
+        public override string ToString() => nameof(InputMediaWithThumb);
     }
 }

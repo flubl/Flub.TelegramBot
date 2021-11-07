@@ -8,7 +8,7 @@ namespace Flub.TelegramBot.Methods
     /// <summary>
     /// Use this method to delete the list of the bot's commands for the given scope and user language.
     /// After deletion, higher level commands will be shown to affected users.
-    /// Returns <see cref="true"/> on success.
+    /// Returns <see langword="true"/> on success.
     /// </summary>
     public class DeleteMyCommands : Method<bool?>
     {
@@ -37,7 +37,7 @@ namespace Flub.TelegramBot.Methods
         /// <summary>
         /// Use this method to delete the list of the bot's commands for the given scope and user language.
         /// After deletion, higher level commands will be shown to affected users.
-        /// Returns <see cref="true"/> on success.
+        /// Returns <see langword="true"/> on success.
         /// </summary>
         /// <param name="bot">The bot to send the request with.</param>
         /// <param name="scope">A <see cref="BotCommandScope"/> object, describing scope of users for which the commands are relevant. Defaults to <see cref="BotCommandScopeDefault"/>.</param>

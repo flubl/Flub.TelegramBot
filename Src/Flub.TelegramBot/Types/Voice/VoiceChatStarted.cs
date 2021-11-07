@@ -5,5 +5,6 @@
     /// </summary>
     public class VoiceChatStarted
     {
+        public override string ToString() => nameof(VoiceChatStarted);
     }
 }

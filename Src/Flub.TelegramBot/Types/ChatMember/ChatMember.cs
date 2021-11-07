@@ -13,7 +13,7 @@ namespace Flub.TelegramBot.Types
     /// <see cref="ChatMemberLeft"/>,
     /// <see cref="ChatMemberBanned"/>.
     /// </summary>
-    [JsonConverter(typeof(JsonTypedConverter<ChatMember, ChatMemberStatus>))]
+    [JsonConverter(typeof(JsonTypedConverter))]
     public abstract class ChatMember : IJsonTyped<ChatMemberStatus>
     {
         /// <summary>
@@ -30,13 +30,15 @@ namespace Flub.TelegramBot.Types
         {
             Type = status;
         }
+
+        public override string ToString() => $"{nameof(ChatMember)}[{Type}]";
     }
 
     /// <summary>
     /// The member's status in the chat.
     /// </summary>
     [Flags]
-    [JsonConverter(typeof(JsonFieldEnumConverter<ChatMemberStatus>))]
+    [JsonConverter(typeof(JsonFieldEnumConverter))]
     public enum ChatMemberStatus : int
     {
         [JsonIgnore]

@@ -28,7 +28,7 @@ namespace Flub.TelegramBot.Types
         [JsonPropertyName("foursquare_id")]
         public string FoursquareId { get; set; }
         /// <summary>
-        /// Optional. Foursquare type of the venue. (For example, “arts_entertainment/default”, “arts_entertainment/aquarium” or “food/icecream”.)
+        /// Optional. Foursquare type of the venue. (For example, "arts_entertainment/default", "arts_entertainment/aquarium" or "food/icecream".)
         /// </summary>
         [JsonPropertyName("foursquare_type")]
         public string FoursquareType { get; set; }
@@ -42,5 +42,7 @@ namespace Flub.TelegramBot.Types
         /// </summary>
         [JsonPropertyName("google_place_type")]
         public string GooglePlaceType { get; set; }
+
+        public override string ToString() => $"{nameof(Venue)}[{Title}, {Address}, {Location}]";
     }
 }

@@ -10,7 +10,7 @@ namespace Flub.TelegramBot.Methods
     /// <summary>
     /// Use this method to send an answer to a <see cref="CallbackQuery"/> sent from <see cref="InlineKeyboardMarkup"/>.
     /// The answer will be displayed to the user as a notification at the top of the chat screen or as an alert.
-    /// On success, <see cref="true"/> is returned.
+    /// On success, <see langword="true"/> is returned.
     /// </summary>
     public class AnswerCallbackQuery : Method<bool?>
     {
@@ -26,7 +26,7 @@ namespace Flub.TelegramBot.Methods
         [JsonPropertyName("text")]
         public string Text { get; set; }
         /// <summary>
-        /// If <see cref="true"/>, an alert will be shown by the client instead of a notification at the top of the chat screen. Defaults to <see cref="false"/>.
+        /// If <see langword="true"/>, an alert will be shown by the client instead of a notification at the top of the chat screen. Defaults to <see langword="false"/>.
         /// </summary>
         [JsonPropertyName("show_alert")]
         public bool? ShowAlert { get; set; }
@@ -59,12 +59,12 @@ namespace Flub.TelegramBot.Methods
         /// <summary>
         /// Use this method to send an answer to a <see cref="CallbackQuery"/> sent from <see cref="InlineKeyboardMarkup"/>.
         /// The answer will be displayed to the user as a notification at the top of the chat screen or as an alert.
-        /// On success, <see cref="true"/> is returned.
+        /// On success, <see langword="true"/> is returned.
         /// </summary>
         /// <param name="bot">The bot to send the request with.</param>
         /// <param name="callbackQueryId">Unique identifier for the query to be answered.</param>
         /// <param name="text">Text of the notification. If not specified, nothing will be shown to the user, 0-200 characters.</param>
-        /// <param name="showAlert">If <see cref="true"/>, an alert will be shown by the client instead of a notification at the top of the chat screen. Defaults to <see cref="false"/>.</param>
+        /// <param name="showAlert">If <see langword="true"/>, an alert will be shown by the client instead of a notification at the top of the chat screen. Defaults to <see langword="false"/>.</param>
         /// <param name="url">
         /// URL that will be opened by the user's client.
         /// If you have created a Game and accepted the conditions via @Botfather, specify the URL that opens your game
@@ -96,12 +96,12 @@ namespace Flub.TelegramBot.Methods
         /// <summary>
         /// Use this method to send an answer to a <see cref="CallbackQuery"/> sent from <see cref="InlineKeyboardMarkup"/>.
         /// The answer will be displayed to the user as a notification at the top of the chat screen or as an alert.
-        /// On success, <see cref="true"/> is returned.
+        /// On success, <see langword="true"/> is returned.
         /// </summary>
         /// <param name="bot">The bot to send the request with.</param>
         /// <param name="callbackQuery">The query to be answered.</param>
         /// <param name="text">Text of the notification. If not specified, nothing will be shown to the user, 0-200 characters.</param>
-        /// <param name="showAlert">If <see cref="true"/>, an alert will be shown by the client instead of a notification at the top of the chat screen. Defaults to <see cref="false"/>.</param>
+        /// <param name="showAlert">If <see langword="true"/>, an alert will be shown by the client instead of a notification at the top of the chat screen. Defaults to <see langword="false"/>.</param>
         /// <param name="url">
         /// URL that will be opened by the user's client.
         /// If you have created a Game and accepted the conditions via @Botfather, specify the URL that opens your game

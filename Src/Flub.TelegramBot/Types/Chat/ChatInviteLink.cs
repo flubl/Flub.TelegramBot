@@ -9,7 +9,7 @@ namespace Flub.TelegramBot.Types
     public class ChatInviteLink
     {
         /// <summary>
-        /// The invite link. If the link was created by another chat administrator, then the second part of the link will be replaced with “…”.
+        /// The invite link. If the link was created by another chat administrator, then the second part of the link will be replaced with "...".
         /// </summary>
         [JsonPropertyName("invite_link")]
         public Uri InviteLink { get; set; }
@@ -19,12 +19,12 @@ namespace Flub.TelegramBot.Types
         [JsonPropertyName("creator")]
         public User Creator { get; set; }
         /// <summary>
-        /// True, if the link is primary.
+        /// <see langword="true"/>, if the link is primary.
         /// </summary>
         [JsonPropertyName("is_primary")]
         public bool? IsPrimary { get; set; }
         /// <summary>
-        /// True, if the link is revoked.
+        /// <see langword="true"/>, if the link is revoked.
         /// </summary>
         [JsonPropertyName("is_revoked")]
         public bool? IsRevoked { get; set; }
@@ -47,5 +47,7 @@ namespace Flub.TelegramBot.Types
         /// </summary>
         [JsonPropertyName("member_limit")]
         public int? MemberLimit { get; set; }
+
+        public override string ToString() => $"{nameof(ChatInviteLink)}[{InviteLink}]";
     }
 }

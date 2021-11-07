@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Text.Json.Serialization;
 
 namespace Flub.TelegramBot.Types
@@ -14,5 +15,7 @@ namespace Flub.TelegramBot.Types
         /// </summary>
         [JsonPropertyName("inline_keyboard")]
         public IEnumerable<IEnumerable<InlineKeyboardButton>> InlineKeyboard { get; set; }
+
+        public override string ToString() => $"{nameof(InlineKeyboardMarkup)}[{InlineKeyboard.Sum(i => i.Count())} buttons]";
     }
 }

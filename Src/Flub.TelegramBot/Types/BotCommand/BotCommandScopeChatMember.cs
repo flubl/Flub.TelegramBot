@@ -15,10 +15,8 @@ namespace Flub.TelegramBot.Types
         [JsonPropertyName("user_id")]
         public int? UserId { get; set; }
 
-        public BotCommandScopeChatMember()
-            : base(BotCommandScopeType.ChatMember)
-        {
+        public BotCommandScopeChatMember() : base(BotCommandScopeType.ChatMember) { }
 
-        }
+        public override string ToString() => $"{nameof(BotCommandScopeChatMember)}[{ChatId}, {UserId}]";
     }
 }

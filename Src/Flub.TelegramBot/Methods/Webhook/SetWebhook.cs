@@ -11,7 +11,7 @@ namespace Flub.TelegramBot.Methods
     /// <summary>
     /// Use this method to specify a url and receive incoming updates via an outgoing webhook. Whenever there is an update for the bot,
     /// Telegram will send an HTTPS POST request to the specified url, containing a JSON-serialized Update. In case of an unsuccessful request,
-    /// Telegram will give up after a reasonable amount of attempts. Returns <see cref="true"/> on success.
+    /// Telegram will give up after a reasonable amount of attempts. Returns <see langword="true"/> on success.
     /// If you'd like to make sure that the Webhook request comes from Telegram, Telegram recommends using a secret path in the URL,
     /// e.g. https://www.example.com/<token>. Since nobody else knows your bot's token, you can be pretty sure it's Telegram.
     /// Use <see cref="DeleteWebhook"/> to remove webhook integration.
@@ -51,7 +51,7 @@ namespace Flub.TelegramBot.Methods
         [JsonPropertyName("allowed_updates")]
         public IEnumerable<UpdateType> AllowedUpdates { get; set; }
         /// <summary>
-        /// Pass <see cref="true"/> to drop all pending updates.
+        /// Pass <see langword="true"/> to drop all pending updates.
         /// </summary>
         [JsonPropertyName("drop_pending_updates")]
         public bool? DropPendingUpdates { get; set; }
@@ -73,7 +73,7 @@ namespace Flub.TelegramBot.Methods
         /// <summary>
         /// Use this method to specify a url and receive incoming updates via an outgoing webhook. Whenever there is an update for the bot,
         /// Telegram will send an HTTPS POST request to the specified url, containing a JSON-serialized Update. In case of an unsuccessful request,
-        /// Telegram will give up after a reasonable amount of attempts. Returns <see cref="true"/> on success.
+        /// Telegram will give up after a reasonable amount of attempts. Returns <see langword="true"/> on success.
         /// If you'd like to make sure that the Webhook request comes from Telegram, Telegram recommends using a secret path in the URL,
         /// e.g. https://www.example.com/{token}. Since nobody else knows your bot's token, you can be pretty sure it's Telegram.
         /// Use <see cref="DeleteWebhook"/> to remove webhook integration.
@@ -96,7 +96,7 @@ namespace Flub.TelegramBot.Methods
         /// Please note that this parameter doesn't affect updates created before the call to the <see cref="SetWebhook"/>,
         /// so unwanted updates may be received for a short period of time.
         /// </param>
-        /// <param name="dropPendingUpdates">Pass <see cref="true"/> to drop all pending updates.</param>
+        /// <param name="dropPendingUpdates">Pass <see langword="true"/> to drop all pending updates.</param>
         /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <returns>The task object representing the asynchronous operation.</returns>
         public static Task<bool> SetWebhook(this TelegramBot bot,

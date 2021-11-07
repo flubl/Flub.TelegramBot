@@ -12,9 +12,11 @@ namespace Flub.TelegramBot.Types
     /// <see cref="BotCommandScopeAllChatAdministrators"/>,
     /// <see cref="BotCommandScopeChat"/>,
     /// <see cref="BotCommandScopeChatAdministrators"/>,
-    /// <see cref="BotCommandScopeChatMember"/>
+    /// <see cref="BotCommandScopeChatMember"/>.
+    /// See <see href="https://core.telegram.org/bots/api#determining-list-of-commands">Determining list of Commands</see> for more informations about
+    /// the algorithm used to determine the list of commands for a particular user viewing the bot menu.
     /// </summary>
-    [JsonConverter(typeof(JsonTypedConverter<BotCommandScope, BotCommandScopeType>))]
+    [JsonConverter(typeof(JsonTypedConverter))]
     public abstract class BotCommandScope : IJsonTyped<BotCommandScopeType>
     {
         /// <summary>
@@ -27,10 +29,12 @@ namespace Flub.TelegramBot.Types
         {
             Type = type;
         }
+
+        public override string ToString() => $"{nameof(BotCommandScope)}[{Type}]";
     }
 
     [Flags]
-    [JsonConverter(typeof(JsonFieldEnumConverter<BotCommandScopeType>))]
+    [JsonConverter(typeof(JsonFieldEnumConverter))]
     public enum BotCommandScopeType : int
     {
         [JsonIgnore]

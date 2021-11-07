@@ -22,5 +22,7 @@ namespace Flub.TelegramBot.Types
             get => StartDateValue.HasValue ? DateTimeOffset.FromUnixTimeSeconds(StartDateValue.Value).DateTime : null;
             set => StartDateValue = value.HasValue ? new DateTimeOffset(value.Value).ToUnixTimeSeconds() : null;
         }
+
+        public override string ToString() => $"{nameof(VoiceChatScheduled)}[{StartDate}]";
     }
 }

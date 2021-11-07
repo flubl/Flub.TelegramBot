@@ -22,5 +22,7 @@ namespace Flub.TelegramBot.Types
         /// </summary>
         [JsonPropertyName("file_size")]
         public int? Size { get; set; }
+
+        public override string ToString() => $"{nameof(FileBase)}[{Id}]";
     }
 }

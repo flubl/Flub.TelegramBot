@@ -9,7 +9,7 @@ namespace Flub.TelegramBot.Methods
 {
     /// <summary>
     /// Use this method to edit text and game messages.
-    /// On success, if the edited message is not an inline message, the edited <see cref="Message"/> is returned, otherwise <see cref="true"/> is returned.
+    /// On success, if the edited message is not an inline message, the edited <see cref="Message"/> is returned, otherwise <see langword="true"/> is returned.
     /// </summary>
     public class EditMessageText<TResult> : Method<TResult>
     {
@@ -68,7 +68,7 @@ namespace Flub.TelegramBot.Methods
 
     /// <summary>
     /// Use this method to edit text and game messages.
-    /// On success, <see cref="true"/> is returned.
+    /// On success, <see langword="true"/> is returned.
     /// </summary>
     public class EditInlineMessageText : EditMessageText<bool?>
     {
@@ -155,7 +155,7 @@ namespace Flub.TelegramBot.Methods
 
         /// <summary>
         /// Use this method to edit text and game messages.
-        /// On success, <see cref="true"/> is returned.
+        /// On success, <see langword="true"/> is returned.
         /// </summary>
         /// <param name="bot">The bot to send the request with.</param>
         /// <param name="inlineMessageId">Identifier of the inline message.</param>
@@ -186,7 +186,7 @@ namespace Flub.TelegramBot.Methods
 
         /// <summary>
         /// Use this method to edit text and game messages.
-        /// On success, <see cref="true"/> is returned.
+        /// On success, <see langword="true"/> is returned.
         /// </summary>
         /// <param name="bot">The bot to send the request with.</param>
         /// <param name="inlineMessage">The inline message.</param>

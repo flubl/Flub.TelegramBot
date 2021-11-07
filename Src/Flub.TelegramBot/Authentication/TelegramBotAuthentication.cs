@@ -13,6 +13,7 @@ namespace Flub.TelegramBot
         /// </summary>
         /// <param name="authenticationData">The data to be hashed.</param>
         /// <returns>Returns the string representation in hex of the computed hash.</returns>
+        /// <exception cref="ArgumentNullException"></exception>
         public string ComputeHash(IAuthenticationData authenticationData)
         {
             if (authenticationData is null)
@@ -28,10 +29,12 @@ namespace Flub.TelegramBot
         /// <param name="authenticationData">The data to be validated.</param>
         /// <param name="validTimeSpan">
         /// The valid timespan between the <see cref="IAuthenticationData.AuthenticationDate"/> and <see cref="DateTime.Now"/>.
-        /// If <see cref="null"/>, the date will be ignored.
+        /// If <see langword="null"/>, the date will be ignored.
         /// </param>
         /// <param name="throwExceptionOnFailure">True to throw a exception if validation fails.</param>
-        /// <returns>Returns <see cref="true"/> if the validation was successful.</returns>
+        /// <returns>Returns <see langword="true"/> if the validation was successful.</returns>
+        /// <exception cref="ArgumentNullException"></exception>
+        /// <exception cref="TelegramBotException"></exception>
         public bool Validate(IAuthenticationData authenticationData, TimeSpan? validTimeSpan = null, bool throwExceptionOnFailure = true)
         {
             if (!string.Equals(ComputeHash(authenticationData), authenticationData.AuthenticationHash, StringComparison.OrdinalIgnoreCase) || 

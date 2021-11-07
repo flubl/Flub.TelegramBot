@@ -27,19 +27,13 @@ namespace Flub.TelegramBot.Types
         /// Initializes a new instance of the <see cref="InputMediaAnimation"/> class with a specified type.
         /// </summary>
         /// <param name="type">The type of the media.</param>
-        protected InputMediaAnimation(InputMediaType type)
-            : base(type)
-        {
-
-        }
+        protected InputMediaAnimation(InputMediaType type) : base(type) { }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="InputMediaAnimation"/> class.
         /// </summary>
-        public InputMediaAnimation()
-            : this(InputMediaType.Animation)
-        {
+        public InputMediaAnimation() : this(InputMediaType.Animation) { }
 
-        }
+        public override string ToString() => $"{nameof(InputMediaAnimation)}[{Media}]";
     }
 }

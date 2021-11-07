@@ -17,5 +17,7 @@ namespace Flub.TelegramBot.Types
         /// </summary>
         [JsonPropertyName("height")]
         public int? Height { get; set; }
+
+        public override string ToString() => $"{nameof(PhotoSize)}[{Width}x{Height}, {Id}]";
     }
 }

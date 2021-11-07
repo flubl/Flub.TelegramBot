@@ -8,7 +8,7 @@ namespace Flub.TelegramBot.Types
     public class InputMediaVideo : InputMediaAnimation
     {
         /// <summary>
-        /// Optional. Pass True, if the uploaded video is suitable for streaming.
+        /// Optional. Pass <see langword="true"/>, if the uploaded video is suitable for streaming.
         /// </summary>
         [JsonPropertyName("supports_streaming")]
         public bool? SupportsStreaming { get; set; }
@@ -16,10 +16,8 @@ namespace Flub.TelegramBot.Types
         /// <summary>
         /// Initializes a new instance of the <see cref="InputMediaVideo"/> class.
         /// </summary>
-        public InputMediaVideo()
-            : base(InputMediaType.Video)
-        {
+        public InputMediaVideo() : base(InputMediaType.Video) { }
 
-        }
+        public override string ToString() => $"{nameof(InputMediaVideo)}[{Media}]";
     }
 }

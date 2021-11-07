@@ -8,10 +8,8 @@ namespace Flub.TelegramBot.Types
     [JsonTyped(BotCommandScopeType.AllPrivateChats)]
     public class BotCommandScopeAllPrivateChats : BotCommandScope
     {
-        public BotCommandScopeAllPrivateChats()
-            : base(BotCommandScopeType.AllPrivateChats)
-        {
+        public BotCommandScopeAllPrivateChats() : base(BotCommandScopeType.AllPrivateChats) { }
 
-        }
+        public override string ToString() => $"{nameof(BotCommandScopeAllPrivateChats)}[]";
     }
 }

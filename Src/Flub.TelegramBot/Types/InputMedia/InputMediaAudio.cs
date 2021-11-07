@@ -26,10 +26,8 @@ namespace Flub.TelegramBot.Types
         /// <summary>
         /// Initializes a new instance of the <see cref="InputMediaAudio"/> class.
         /// </summary>
-        public InputMediaAudio()
-            : base(InputMediaType.Audio)
-        {
+        public InputMediaAudio() : base(InputMediaType.Audio) { }
 
-        }
+        public override string ToString() => $"{nameof(InputMediaAudio)}[{Media}]";
     }
 }

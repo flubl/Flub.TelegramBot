@@ -39,7 +39,7 @@ namespace Flub.TelegramBot.Methods
         [JsonPropertyName("height")]
         public int? Height { get; set; }
         /// <summary>
-        /// Pass <see cref="true"/>, if the uploaded video is suitable for streaming.
+        /// Pass <see langword="true"/>, if the uploaded video is suitable for streaming.
         /// </summary>
         [JsonPropertyName("supports_streaming")]
         public bool? SupportsStreaming { get; set; }
@@ -80,10 +80,10 @@ namespace Flub.TelegramBot.Methods
         /// Mode for parsing entities in the caption. See <see href="https://core.telegram.org/bots/api#formatting-options">formatting options</see> for more details.
         /// </param>
         /// <param name="captionEntities">List of special entities that appear in the caption, which can be specified instead of <paramref name="parseMode"/>.</param>
-        /// <param name="supportsStreaming">Pass <see cref="true"/>, if the uploaded video is suitable for streaming.</param>
+        /// <param name="supportsStreaming">Pass <see langword="true"/>, if the uploaded video is suitable for streaming.</param>
         /// <param name="disableNotification">Sends the message silently. Users will receive a notification with no sound.</param>
         /// <param name="replyToMessageId">If the message is a reply, ID of the original message.</param>
-        /// <param name="allowSendingWithoutReply">Pass <see cref="true"/>, if the message should be sent even if the specified replied-to message is not found.</param>
+        /// <param name="allowSendingWithoutReply">Pass <see langword="true"/>, if the message should be sent even if the specified replied-to message is not found.</param>
         /// <param name="replyMarkup">
         /// Additional interface options.
         /// A object for an <see href="https://core.telegram.org/bots#inline-keyboards-and-on-the-fly-updating">inline keyboard</see> (<see cref="InlineKeyboardMarkup"/>),
@@ -151,10 +151,10 @@ namespace Flub.TelegramBot.Methods
         /// Mode for parsing entities in the caption. See <see href="https://core.telegram.org/bots/api#formatting-options">formatting options</see> for more details.
         /// </param>
         /// <param name="captionEntities">List of special entities that appear in the caption, which can be specified instead of <paramref name="parseMode"/>.</param>
-        /// <param name="supportsStreaming">Pass <see cref="true"/>, if the uploaded video is suitable for streaming.</param>
+        /// <param name="supportsStreaming">Pass <see langword="true"/>, if the uploaded video is suitable for streaming.</param>
         /// <param name="disableNotification">Sends the message silently. Users will receive a notification with no sound.</param>
         /// <param name="replyToMessage">If the message is a reply, the original message.</param>
-        /// <param name="allowSendingWithoutReply">Pass <see cref="true"/>, if the message should be sent even if the specified replied-to message is not found.</param>
+        /// <param name="allowSendingWithoutReply">Pass <see langword="true"/>, if the message should be sent even if the specified replied-to message is not found.</param>
         /// <param name="replyMarkup">
         /// Additional interface options.
         /// A object for an <see href="https://core.telegram.org/bots#inline-keyboards-and-on-the-fly-updating">inline keyboard</see> (<see cref="InlineKeyboardMarkup"/>),

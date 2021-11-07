@@ -8,7 +8,7 @@ namespace Flub.TelegramBot.Types
     public class ChatPhoto : IFile
     {
         /// <summary>
-        /// File identifier of small (160x160) chat photo. This file_id can be used only for photo download and only for as long as the photo is not changed.
+        /// File identifier of small (160x160) chat photo. This id can be used only for photo download and only for as long as the photo is not changed.
         /// </summary>
         [JsonPropertyName("small_file_id")]
         public string SmallFileId { get; set; }
@@ -18,7 +18,7 @@ namespace Flub.TelegramBot.Types
         [JsonPropertyName("small_file_unique_id")]
         public string SmallFileUniqueId { get; set; }
         /// <summary>
-        /// File identifier of big (640x640) chat photo. This file_id can be used only for photo download and only for as long as the photo is not changed.
+        /// File identifier of big (640x640) chat photo. This id can be used only for photo download and only for as long as the photo is not changed.
         /// </summary>
         [JsonPropertyName("big_file_id")]
         public string BigFileId { get; set; }
@@ -29,5 +29,7 @@ namespace Flub.TelegramBot.Types
         public string BigFileUniqueId { get; set; }
 
         string IFile.Id => BigFileId;
+
+        public override string ToString() => nameof(ChatPhoto);
     }
 }

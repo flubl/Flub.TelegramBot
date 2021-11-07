@@ -1,4 +1,5 @@
-﻿using System.Text.Json.Serialization;
+﻿using System;
+using System.Text.Json.Serialization;
 
 namespace Flub.TelegramBot.Types
 {
@@ -11,6 +12,17 @@ namespace Flub.TelegramBot.Types
         /// Voice chat duration; in seconds.
         /// </summary>
         [JsonPropertyName("duration")]
-        public int? Duration { get; set; }
+        public int? DurationValue { get; set; }
+        /// <summary>
+        /// Voice chat duration.
+        /// </summary>
+        [JsonIgnore]
+        public TimeSpan? Duration
+        {
+            get => DurationValue.HasValue ? TimeSpan.FromSeconds(DurationValue.Value) : null;
+            set => DurationValue = value.HasValue ? (int)value.Value.TotalSeconds : null;
+        }
+
+        public override string ToString() => $"{nameof(VoiceChatEnded)}[{Duration}]";
     }
 }

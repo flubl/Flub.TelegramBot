@@ -34,5 +34,7 @@ namespace Flub.TelegramBot.Types
         public string VCard { get; set; }
 
         long? IChat.Id => UserId;
+
+        public override string ToString() => $"{nameof(Contact)}[{FirstName}, {PhoneNumber}]";
     }
 }

@@ -27,7 +27,7 @@ namespace Flub.TelegramBot.Methods
         [JsonPropertyName("options")]
         public IEnumerable<string> Options { get; set; }
         /// <summary>
-        /// <see cref="true"/>, if the poll needs to be anonymous, defaults to <see cref="true"/>.
+        /// <see langword="true"/>, if the poll needs to be anonymous, defaults to <see langword="true"/>.
         /// </summary>
         [JsonPropertyName("is_anonymous")]
         public bool? IsAnonymous { get; set; }
@@ -37,7 +37,7 @@ namespace Flub.TelegramBot.Methods
         [JsonPropertyName("type")]
         public PollType? Type { get; set; }
         /// <summary>
-        /// <see cref="true"/>, if the poll allows multiple answers, ignored for polls in quiz mode, defaults to <see cref="false"/>.
+        /// <see langword="true"/>, if the poll allows multiple answers, ignored for polls in quiz mode, defaults to <see langword="false"/>.
         /// </summary>
         [JsonPropertyName("allows_multiple_answers")]
         public bool? AllowsMultipleAnswers { get; set; }
@@ -95,7 +95,7 @@ namespace Flub.TelegramBot.Methods
             set => CloseDateValue = value.HasValue ? new DateTimeOffset(value.Value).ToUnixTimeSeconds() : null;
         }
         /// <summary>
-        /// Pass <see cref="true"/>, if the poll needs to be immediately closed. This can be useful for poll preview.
+        /// Pass <see langword="true"/>, if the poll needs to be immediately closed. This can be useful for poll preview.
         /// </summary>
         [JsonPropertyName("is_closed")]
         public bool? IsClosed { get; set; }
@@ -119,9 +119,9 @@ namespace Flub.TelegramBot.Methods
         /// <param name="chatId">Unique identifier for the target chat or username of the target channel (in the format @channelusername).</param>
         /// <param name="question">Poll question, 1-300 characters.</param>
         /// <param name="options">A list of answer options, 2-10 strings 1-100 characters each.</param>
-        /// <param name="isAnonymous"><see cref="true"/>, if the poll needs to be anonymous, defaults to <see cref="true"/>.</param>
+        /// <param name="isAnonymous"><see langword="true"/>, if the poll needs to be anonymous, defaults to <see langword="true"/>.</param>
         /// <param name="type">Poll type, <see cref="PollType.Quiz"/> or <see cref="PollType.Regular"/>, defaults to <see cref="PollType.Regular"/>.</param>
-        /// <param name="allowsMultipleAnswers"><see cref="true"/>, if the poll allows multiple answers, ignored for polls in quiz mode, defaults to <see cref="false"/>.</param>
+        /// <param name="allowsMultipleAnswers"><see langword="true"/>, if the poll allows multiple answers, ignored for polls in quiz mode, defaults to <see langword="false"/>.</param>
         /// <param name="correctOptionId">0-based identifier of the correct answer option, required for polls in quiz mode.</param>
         /// <param name="explanation">
         /// Text that is shown when a user chooses an incorrect answer or taps on the lamp icon in a quiz-style poll,
@@ -135,10 +135,10 @@ namespace Flub.TelegramBot.Methods
         /// Must be at least 5 and no more than 600 seconds in the future.
         /// Can't be used together with <paramref name="openPeriod"/>.
         /// </param>
-        /// <param name="isClosed">Pass <see cref="true"/>, if the poll needs to be immediately closed. This can be useful for poll preview.</param>
+        /// <param name="isClosed">Pass <see langword="true"/>, if the poll needs to be immediately closed. This can be useful for poll preview.</param>
         /// <param name="disableNotification">Sends the message silently. Users will receive a notification with no sound.</param>
         /// <param name="replyToMessageId">If the message is a reply, ID of the original message.</param>
-        /// <param name="allowSendingWithoutReply">Pass <see cref="true"/>, if the message should be sent even if the specified replied-to message is not found.</param>
+        /// <param name="allowSendingWithoutReply">Pass <see langword="true"/>, if the message should be sent even if the specified replied-to message is not found.</param>
         /// <param name="replyMarkup">
         /// Additional interface options.
         /// A object for an <see href="https://core.telegram.org/bots#inline-keyboards-and-on-the-fly-updating">inline keyboard</see> (<see cref="InlineKeyboardMarkup"/>),
@@ -195,9 +195,9 @@ namespace Flub.TelegramBot.Methods
         /// <param name="chatId">Unique identifier for the target chat or username of the target channel (in the format @channelusername).</param>
         /// <param name="question">Poll question, 1-300 characters.</param>
         /// <param name="options">A list of answer options, 2-10 strings 1-100 characters each.</param>
-        /// <param name="isAnonymous"><see cref="true"/>, if the poll needs to be anonymous, defaults to <see cref="true"/>.</param>
+        /// <param name="isAnonymous"><see langword="true"/>, if the poll needs to be anonymous, defaults to <see langword="true"/>.</param>
         /// <param name="type">Poll type, <see cref="PollType.Quiz"/> or <see cref="PollType.Regular"/>, defaults to <see cref="PollType.Regular"/>.</param>
-        /// <param name="allowsMultipleAnswers"><see cref="true"/>, if the poll allows multiple answers, ignored for polls in quiz mode, defaults to <see cref="false"/>.</param>
+        /// <param name="allowsMultipleAnswers"><see langword="true"/>, if the poll allows multiple answers, ignored for polls in quiz mode, defaults to <see langword="false"/>.</param>
         /// <param name="correctOptionId">0-based identifier of the correct answer option, required for polls in quiz mode.</param>
         /// <param name="explanation">
         /// Text that is shown when a user chooses an incorrect answer or taps on the lamp icon in a quiz-style poll,
@@ -211,10 +211,10 @@ namespace Flub.TelegramBot.Methods
         /// Must be at least 5 and no more than 600 seconds in the future.
         /// Can't be used together with <paramref name="openPeriod"/>.
         /// </param>
-        /// <param name="isClosed">Pass <see cref="true"/>, if the poll needs to be immediately closed. This can be useful for poll preview.</param>
+        /// <param name="isClosed">Pass <see langword="true"/>, if the poll needs to be immediately closed. This can be useful for poll preview.</param>
         /// <param name="disableNotification">Sends the message silently. Users will receive a notification with no sound.</param>
         /// <param name="replyToMessageId">If the message is a reply, ID of the original message.</param>
-        /// <param name="allowSendingWithoutReply">Pass <see cref="true"/>, if the message should be sent even if the specified replied-to message is not found.</param>
+        /// <param name="allowSendingWithoutReply">Pass <see langword="true"/>, if the message should be sent even if the specified replied-to message is not found.</param>
         /// <param name="replyMarkup">
         /// Additional interface options.
         /// A object for an <see href="https://core.telegram.org/bots#inline-keyboards-and-on-the-fly-updating">inline keyboard</see> (<see cref="InlineKeyboardMarkup"/>),
@@ -271,9 +271,9 @@ namespace Flub.TelegramBot.Methods
         /// <param name="chat">Unique identifier for the target chat or username of the target channel (in the format @channelusername).</param>
         /// <param name="question">Poll question, 1-300 characters.</param>
         /// <param name="options">A list of answer options, 2-10 strings 1-100 characters each.</param>
-        /// <param name="isAnonymous"><see cref="true"/>, if the poll needs to be anonymous, defaults to <see cref="true"/>.</param>
+        /// <param name="isAnonymous"><see langword="true"/>, if the poll needs to be anonymous, defaults to <see langword="true"/>.</param>
         /// <param name="type">Poll type, <see cref="PollType.Quiz"/> or <see cref="PollType.Regular"/>, defaults to <see cref="PollType.Regular"/>.</param>
-        /// <param name="allowsMultipleAnswers"><see cref="true"/>, if the poll allows multiple answers, ignored for polls in quiz mode, defaults to <see cref="false"/>.</param>
+        /// <param name="allowsMultipleAnswers"><see langword="true"/>, if the poll allows multiple answers, ignored for polls in quiz mode, defaults to <see langword="false"/>.</param>
         /// <param name="correctOptionId">0-based identifier of the correct answer option, required for polls in quiz mode.</param>
         /// <param name="explanation">
         /// Text that is shown when a user chooses an incorrect answer or taps on the lamp icon in a quiz-style poll,
@@ -287,10 +287,10 @@ namespace Flub.TelegramBot.Methods
         /// Must be at least 5 and no more than 600 seconds in the future.
         /// Can't be used together with <paramref name="openPeriod"/>.
         /// </param>
-        /// <param name="isClosed">Pass <see cref="true"/>, if the poll needs to be immediately closed. This can be useful for poll preview.</param>
+        /// <param name="isClosed">Pass <see langword="true"/>, if the poll needs to be immediately closed. This can be useful for poll preview.</param>
         /// <param name="disableNotification">Sends the message silently. Users will receive a notification with no sound.</param>
         /// <param name="replyToMessage">If the message is a reply, the original message.</param>
-        /// <param name="allowSendingWithoutReply">Pass <see cref="true"/>, if the message should be sent even if the specified replied-to message is not found.</param>
+        /// <param name="allowSendingWithoutReply">Pass <see langword="true"/>, if the message should be sent even if the specified replied-to message is not found.</param>
         /// <param name="replyMarkup">
         /// Additional interface options.
         /// A object for an <see href="https://core.telegram.org/bots#inline-keyboards-and-on-the-fly-updating">inline keyboard</see> (<see cref="InlineKeyboardMarkup"/>),

@@ -12,5 +12,7 @@ namespace Flub.TelegramBot.Types
         /// </summary>
         [JsonPropertyName("message_id")]
         public int? Id { get; set; }
+
+        public override string ToString() => $"{nameof(MessageId)}[{Id}]";
     }
 }

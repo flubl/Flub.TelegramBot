@@ -10,8 +10,8 @@ namespace Flub.TelegramBot.Methods
     /// <summary>
     /// Use this method to restrict a user in a supergroup.
     /// The bot must be an administrator in the supergroup for this to work and must have the appropriate admin rights.
-    /// Pass <see cref="true"/> for all permissions to lift restrictions from a user.
-    /// Returns <see cref="true"/> on success.
+    /// Pass <see langword="true"/> for all permissions to lift restrictions from a user.
+    /// Returns <see langword="true"/> on success.
     /// </summary>
     public class RestrictChatMember : Method<bool?>
     {
@@ -64,8 +64,8 @@ namespace Flub.TelegramBot.Methods
         /// <summary>
         /// Use this method to restrict a user in a supergroup.
         /// The bot must be an administrator in the supergroup for this to work and must have the appropriate admin rights.
-        /// Pass <see cref="true"/> for all permissions to lift restrictions from a user.
-        /// Returns <see cref="true"/> on success.
+        /// Pass <see langword="true"/> for all permissions to lift restrictions from a user.
+        /// Returns <see langword="true"/> on success.
         /// </summary>
         /// <param name="bot">The bot to send the request with.</param>
         /// <param name="chatId">Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername).</param>
@@ -94,8 +94,8 @@ namespace Flub.TelegramBot.Methods
         /// <summary>
         /// Use this method to restrict a user in a supergroup.
         /// The bot must be an administrator in the supergroup for this to work and must have the appropriate admin rights.
-        /// Pass <see cref="true"/> for all permissions to lift restrictions from a user.
-        /// Returns <see cref="true"/> on success.
+        /// Pass <see langword="true"/> for all permissions to lift restrictions from a user.
+        /// Returns <see langword="true"/> on success.
         /// </summary>
         /// <param name="bot">The bot to send the request with.</param>
         /// <param name="chatId">Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername).</param>
@@ -124,8 +124,8 @@ namespace Flub.TelegramBot.Methods
         /// <summary>
         /// Use this method to restrict a user in a supergroup.
         /// The bot must be an administrator in the supergroup for this to work and must have the appropriate admin rights.
-        /// Pass <see cref="true"/> for all permissions to lift restrictions from a user.
-        /// Returns <see cref="true"/> on success.
+        /// Pass <see langword="true"/> for all permissions to lift restrictions from a user.
+        /// Returns <see langword="true"/> on success.
         /// </summary>
         /// <param name="bot">The bot to send the request with.</param>
         /// <param name="chat">The target chat.</param>

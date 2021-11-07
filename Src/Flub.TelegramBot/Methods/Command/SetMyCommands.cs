@@ -10,7 +10,7 @@ namespace Flub.TelegramBot.Methods
     /// <summary>
     /// Use this method to change the list of the bot's commands.
     /// See https://core.telegram.org/bots#commands for more details about bot commands.
-    /// Returns <see cref="true"/> on success.
+    /// Returns <see langword="true"/> on success.
     /// </summary>
     public class SetMyCommands : Method<bool?>
     {
@@ -45,7 +45,7 @@ namespace Flub.TelegramBot.Methods
         /// <summary>
         /// Use this method to change the list of the bot's commands.
         /// See https://core.telegram.org/bots#commands for more details about bot commands.
-        /// Returns <see cref="true"/> on success.
+        /// Returns <see langword="true"/> on success.
         /// </summary>
         /// <param name="bot">The bot to send the request with.</param>
         /// <param name="commands">A list of <see cref="BotCommand"/> to be set as the list of the bot's commands. At most 100 commands can be specified.</param>

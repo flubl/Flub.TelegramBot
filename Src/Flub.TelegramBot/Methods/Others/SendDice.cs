@@ -13,9 +13,9 @@ namespace Flub.TelegramBot.Methods
     {
         /// <summary>
         /// Emoji on which the dice throw animation is based.
-        /// Dice can have values 1-6 for <see cref="DiceType.Dice"/> “🎲”, <see cref="DiceType.BullsEye"/> “🎯” and <see cref="DiceType.Bowling"/> “🎳”,
-        /// values 1-5 for <see cref="DiceType.Basketball"/> “🏀” and <see cref="DiceType.Football"/> “⚽”, and values 1-64 for <see cref="DiceType.SlotMachine"/> “🎰”.
-        /// Defaults to <see cref="DiceType.Dice"/> “🎲”.
+        /// Dice can have values 1-6 for <see cref="DiceType.Dice"/> "🎲", <see cref="DiceType.BullsEye"/> "🎯" and <see cref="DiceType.Bowling"/> "🎳",
+        /// values 1-5 for <see cref="DiceType.Basketball"/> "🏀" and <see cref="DiceType.Football"/> "⚽", and values 1-64 for <see cref="DiceType.SlotMachine"/> "🎰".
+        /// Defaults to <see cref="DiceType.Dice"/> "🎲".
         /// </summary>
         [JsonPropertyName("emoji")]
         public DiceType? Emoji { get; set; }
@@ -39,13 +39,13 @@ namespace Flub.TelegramBot.Methods
         /// <param name="chatId">Unique identifier for the target chat or username of the target channel (in the format @channelusername).</param>
         /// <param name="emoji">
         /// Emoji on which the dice throw animation is based.
-        /// Dice can have values 1-6 for <see cref="DiceType.Dice"/> “🎲”, <see cref="DiceType.BullsEye"/> “🎯” and <see cref="DiceType.Bowling"/> “🎳”,
-        /// values 1-5 for <see cref="DiceType.Basketball"/> “🏀” and <see cref="DiceType.Football"/> “⚽”, and values 1-64 for <see cref="DiceType.SlotMachine"/> “🎰”.
-        /// Defaults to <see cref="DiceType.Dice"/> “🎲”.
+        /// Dice can have values 1-6 for <see cref="DiceType.Dice"/> "🎲", <see cref="DiceType.BullsEye"/> "🎯" and <see cref="DiceType.Bowling"/> "🎳",
+        /// values 1-5 for <see cref="DiceType.Basketball"/> "🏀" and <see cref="DiceType.Football"/> "⚽", and values 1-64 for <see cref="DiceType.SlotMachine"/> "🎰".
+        /// Defaults to <see cref="DiceType.Dice"/> "🎲".
         /// </param>
         /// <param name="disableNotification">Sends the message silently. Users will receive a notification with no sound.</param>
         /// <param name="replyToMessageId">If the message is a reply, ID of the original message.</param>
-        /// <param name="allowSendingWithoutReply">Pass <see cref="true"/>, if the message should be sent even if the specified replied-to message is not found.</param>
+        /// <param name="allowSendingWithoutReply">Pass <see langword="true"/>, if the message should be sent even if the specified replied-to message is not found.</param>
         /// <param name="replyMarkup">
         /// Additional interface options.
         /// A object for an <see href="https://core.telegram.org/bots#inline-keyboards-and-on-the-fly-updating">inline keyboard</see> (<see cref="InlineKeyboardMarkup"/>),
@@ -80,13 +80,13 @@ namespace Flub.TelegramBot.Methods
         /// <param name="chat">Unique identifier for the target chat or username of the target channel (in the format @channelusername).</param>
         /// <param name="emoji">
         /// Emoji on which the dice throw animation is based.
-        /// Dice can have values 1-6 for <see cref="DiceType.Dice"/> “🎲”, <see cref="DiceType.BullsEye"/> “🎯” and <see cref="DiceType.Bowling"/> “🎳”,
-        /// values 1-5 for <see cref="DiceType.Basketball"/> “🏀” and <see cref="DiceType.Football"/> “⚽”, and values 1-64 for <see cref="DiceType.SlotMachine"/> “🎰”.
-        /// Defaults to <see cref="DiceType.Dice"/> “🎲”.
+        /// Dice can have values 1-6 for <see cref="DiceType.Dice"/> "🎲", <see cref="DiceType.BullsEye"/> "🎯" and <see cref="DiceType.Bowling"/> "🎳",
+        /// values 1-5 for <see cref="DiceType.Basketball"/> "🏀" and <see cref="DiceType.Football"/> "⚽", and values 1-64 for <see cref="DiceType.SlotMachine"/> "🎰".
+        /// Defaults to <see cref="DiceType.Dice"/> "🎲".
         /// </param>
         /// <param name="disableNotification">Sends the message silently. Users will receive a notification with no sound.</param>
         /// <param name="replyToMessage">If the message is a reply, the original message.</param>
-        /// <param name="allowSendingWithoutReply">Pass <see cref="true"/>, if the message should be sent even if the specified replied-to message is not found.</param>
+        /// <param name="allowSendingWithoutReply">Pass <see langword="true"/>, if the message should be sent even if the specified replied-to message is not found.</param>
         /// <param name="replyMarkup">
         /// Additional interface options.
         /// A object for an <see href="https://core.telegram.org/bots#inline-keyboards-and-on-the-fly-updating">inline keyboard</see> (<see cref="InlineKeyboardMarkup"/>),

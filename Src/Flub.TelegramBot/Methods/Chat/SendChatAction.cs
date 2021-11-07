@@ -10,7 +10,7 @@ namespace Flub.TelegramBot.Methods
     /// <summary>
     /// Use this method when you need to tell the user that something is happening on the bot's side.
     /// The status is set for 5 seconds or less (when a message arrives from your bot, Telegram clients clear its typing status).
-    /// Returns <see cref="true"/> on success.
+    /// Returns <see langword="true"/> on success.
     /// </summary>
     public class SendChatAction : Method<bool?>
     {
@@ -37,7 +37,7 @@ namespace Flub.TelegramBot.Methods
     }
 
     [Flags]
-    [JsonConverter(typeof(JsonFieldEnumConverter<ChatAction>))]
+    [JsonConverter(typeof(JsonFieldEnumConverter))]
     public enum ChatAction : int
     {
         [JsonIgnore]
@@ -72,7 +72,7 @@ namespace Flub.TelegramBot.Methods
         /// <summary>
         /// Use this method when you need to tell the user that something is happening on the bot's side.
         /// The status is set for 5 seconds or less (when a message arrives from your bot, Telegram clients clear its typing status).
-        /// Returns <see cref="true"/> on success.
+        /// Returns <see langword="true"/> on success.
         /// </summary>
         /// <param name="bot">The bot to send the request with.</param>
         /// <param name="chatId">Unique identifier for the target chat or username of the target channel (in the format @channelusername).</param>
@@ -97,7 +97,7 @@ namespace Flub.TelegramBot.Methods
         /// <summary>
         /// Use this method when you need to tell the user that something is happening on the bot's side.
         /// The status is set for 5 seconds or less (when a message arrives from your bot, Telegram clients clear its typing status).
-        /// Returns <see cref="true"/> on success.
+        /// Returns <see langword="true"/> on success.
         /// </summary>
         /// <param name="bot">The bot to send the request with.</param>
         /// <param name="chat">The target chat.</param>

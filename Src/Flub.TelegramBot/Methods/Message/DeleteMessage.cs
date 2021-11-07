@@ -15,7 +15,7 @@ namespace Flub.TelegramBot.Methods
     /// - Bots granted <see cref="ChatMemberAdministrator.CanPostMessages"/> permissions can delete outgoing messages in channels.
     /// - If the bot is an administrator of a group, it can delete any message there.
     /// - If the bot has <see cref="ChatMemberAdministrator.CanDeleteMessages"/> permission in a supergroup or a channel, it can delete any message there.
-    /// Returns <see cref="true"/> on success.
+    /// Returns <see langword="true"/> on success.
     /// </summary>
     public class DeleteMessage : Method<bool?>
     {
@@ -52,7 +52,7 @@ namespace Flub.TelegramBot.Methods
         /// - Bots granted <see cref="ChatMemberAdministrator.CanPostMessages"/> permissions can delete outgoing messages in channels.
         /// - If the bot is an administrator of a group, it can delete any message there.
         /// - If the bot has <see cref="ChatMemberAdministrator.CanDeleteMessages"/> permission in a supergroup or a channel, it can delete any message there.
-        /// Returns <see cref="true"/> on success.
+        /// Returns <see langword="true"/> on success.
         /// </summary>
         /// <param name="bot">The bot to send the request with.</param>
         /// <param name="chatId">Unique identifier for the target chat or username of the target channel (in the format @channelusername).</param>
@@ -78,7 +78,7 @@ namespace Flub.TelegramBot.Methods
         /// - Bots granted <see cref="ChatMemberAdministrator.CanPostMessages"/> permissions can delete outgoing messages in channels.
         /// - If the bot is an administrator of a group, it can delete any message there.
         /// - If the bot has <see cref="ChatMemberAdministrator.CanDeleteMessages"/> permission in a supergroup or a channel, it can delete any message there.
-        /// Returns <see cref="true"/> on success.
+        /// Returns <see langword="true"/> on success.
         /// </summary>
         /// <param name="bot">The bot to send the request with.</param>
         /// <param name="chat">The target chat.</param>

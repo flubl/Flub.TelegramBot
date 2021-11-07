@@ -11,10 +11,8 @@ namespace Flub.TelegramBot.Types
         /// <summary>
         /// Initializes a new instance of <see cref="ChatMemberLeft"/> with the <see cref="ChatMemberStatus.Left"/> status.
         /// </summary>
-        public ChatMemberLeft()
-            : base(ChatMemberStatus.Left)
-        {
+        public ChatMemberLeft() : base(ChatMemberStatus.Left) { }
 
-        }
+        public override string ToString() => $"{nameof(ChatMemberLeft)}[{User}]";
     }
 }

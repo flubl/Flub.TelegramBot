@@ -8,7 +8,7 @@ namespace Flub.TelegramBot.Types
     /// Mode for parsing texts. See <see href="https://core.telegram.org/bots/api#formatting-options">formatting options</see> for more details.
     /// </summary>
     [Flags]
-    [JsonConverter(typeof(JsonFieldEnumConverter<ParseMode>))]
+    [JsonConverter(typeof(JsonFieldEnumConverter))]
     public enum ParseMode : int
     {
         [JsonIgnore]
