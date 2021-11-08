@@ -11,7 +11,7 @@ namespace Flub.TelegramBot.Methods
     /// Use this method to edit text and game messages.
     /// On success, if the edited message is not an inline message, the edited <see cref="Message"/> is returned, otherwise <see langword="true"/> is returned.
     /// </summary>
-    public class EditMessageText<TResult> : Method<TResult>
+    public abstract class EditMessageText<TResult> : Method<TResult>
     {
         /// <summary>
         /// New text of the message, 1-4096 characters after entities parsing.
@@ -43,7 +43,7 @@ namespace Flub.TelegramBot.Methods
         /// <summary>
         /// Initializes a new instance of the <see cref="EditMessageText{TResult}"/> class.
         /// </summary>
-        public EditMessageText() : base("editMessageText") { }
+        protected EditMessageText() : base("editMessageText") { }
     }
 
     /// <summary>

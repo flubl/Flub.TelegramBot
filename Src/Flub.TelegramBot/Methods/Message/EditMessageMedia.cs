@@ -14,7 +14,7 @@ namespace Flub.TelegramBot.Methods
     /// When an inline message is edited, a new file can't be uploaded; use a previously uploaded file via its <see cref="InputFile.FileId"/> or specify a URL.
     /// On success, if the edited message is not an inline message, the edited <see cref="Message"/> is returned, otherwise <see langword="true"/> is returned.
     /// </summary>
-    public class EditMessageMedia<TResult> : MethodUpload<TResult>
+    public abstract class EditMessageMedia<TResult> : MethodUpload<TResult>
     {
         /// <summary>
         /// A <see cref="InputMedia"/> object for a new media content of the message.
@@ -33,7 +33,7 @@ namespace Flub.TelegramBot.Methods
         /// <summary>
         /// Initializes a new instance of the <see cref="EditMessageMedia{TResult}"/> class.
         /// </summary>
-        public EditMessageMedia() : base("editMessageMedia") { }
+        protected EditMessageMedia() : base("editMessageMedia") { }
     }
 
     /// <summary>

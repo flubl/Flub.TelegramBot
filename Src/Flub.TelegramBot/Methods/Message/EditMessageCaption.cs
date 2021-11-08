@@ -37,7 +37,7 @@ namespace Flub.TelegramBot.Methods
         /// <summary>
         /// Initializes a new instance of the <see cref="EditMessageCaption{TResult}"/> class.
         /// </summary>
-        public EditMessageCaption() : base("editMessageCaption") { }
+        protected EditMessageCaption() : base("editMessageCaption") { }
     }
 
     /// <summary>

@@ -21,7 +21,7 @@ namespace Flub.TelegramBot.Methods
         /// <summary>
         /// Initializes a new instance of the <see cref="StopMessageLiveLocation{TResult}"/> class.
         /// </summary>
-        public StopMessageLiveLocation() : base("stopMessageLiveLocation") { }
+        protected StopMessageLiveLocation() : base("stopMessageLiveLocation") { }
     }
 
     /// <summary>

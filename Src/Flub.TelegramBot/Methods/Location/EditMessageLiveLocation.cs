@@ -49,7 +49,7 @@ namespace Flub.TelegramBot.Methods
         /// <summary>
         /// Initializes a new instance of the <see cref="EditMessageLiveLocation{TResult}"/> class.
         /// </summary>
-        public EditMessageLiveLocation() : base("editMessageLiveLocation") { }
+        protected EditMessageLiveLocation() : base("editMessageLiveLocation") { }
     }
 
     /// <summary>

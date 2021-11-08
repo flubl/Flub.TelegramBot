@@ -10,7 +10,7 @@ namespace Flub.TelegramBot.Methods
     /// Use this method to edit only the reply markup of messages.
     /// On success, if the edited message is not an inline message, the edited <see cref="Message"/> is returned, otherwise <see langword="true"/> is returned.
     /// </summary>
-    public class EditMessageReplyMarkup<TResult> : Method<TResult>
+    public abstract class EditMessageReplyMarkup<TResult> : Method<TResult>
     {
         /// <summary>
         /// A <see cref="InlineKeyboardMarkup"/> object for an inline keyboard.
@@ -21,7 +21,7 @@ namespace Flub.TelegramBot.Methods
         /// <summary>
         /// Initializes a new instance of the <see cref="EditMessageReplyMarkup{TResult}"/> class.
         /// </summary>
-        public EditMessageReplyMarkup() : base("editMessageReplyMarkup") { }
+        protected EditMessageReplyMarkup() : base("editMessageReplyMarkup") { }
     }
 
     /// <summary>
