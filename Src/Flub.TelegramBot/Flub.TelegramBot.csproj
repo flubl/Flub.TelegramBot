@@ -2,13 +2,14 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
-    <Version>0.1.0</Version>
+    <Version>0.1.1</Version>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <PackageProjectUrl>https://github.com/flubl/Flub.TelegramBot</PackageProjectUrl>
     <Authors>Luca Stäheli</Authors>
     <RepositoryUrl>https://github.com/flubl/Flub.TelegramBot</RepositoryUrl>
     <PackageId>Flub.TelegramBot</PackageId>
     <Product>Flub.TelegramBot</Product>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
