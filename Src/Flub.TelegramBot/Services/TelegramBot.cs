@@ -21,7 +21,7 @@ namespace Flub.TelegramBot
         /// <summary>
         /// The implemented <see href="https://core.telegram.org/bots/api#recent-changes">Telegram Bot API Version</see>.
         /// </summary>
-        public const string TELEGRAM_BOT_API_VERSION = "5.3";
+        public const string TELEGRAM_BOT_API_VERSION = "5.4";
 
         /// <summary>
         /// The <see cref="HttpClient"/> to be used for http requests.

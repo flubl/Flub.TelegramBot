@@ -105,6 +105,13 @@ namespace Flub.TelegramBot.Types
         [JsonPropertyName("chat_member")]
         [UpdateType(UpdateType.ChatMember)]
         public ChatMemberUpdated ChatMember { get; set; }
+        /// <summary>
+        /// Optional. A request to join the chat has been sent.
+        /// The bot must have the <see cref="IChatPermissions.CanInviteUsers"/> administrator right in the chat to receive these updates.
+        /// </summary>
+        [JsonPropertyName("chat_join_request")]
+        [UpdateType(UpdateType.ChatJoinRequest)]
+        public ChatJoinRequest ChatJoinRequest { get; set; }
 
         public override string ToString() => $"{nameof(Update)}[{Id}]";
 
@@ -167,6 +174,8 @@ namespace Flub.TelegramBot.Types
         [JsonFieldValue("my_chat_member")]
         MyChatMember = 0x800,
         [JsonFieldValue("chat_member")]
-        ChatMember = 0x1000
+        ChatMember = 0x1000,
+        [JsonFieldValue("chat_join_request")]
+        ChatJoinRequest = 0x2000
     }
 }

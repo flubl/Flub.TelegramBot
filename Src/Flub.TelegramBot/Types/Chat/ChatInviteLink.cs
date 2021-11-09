@@ -19,6 +19,11 @@ namespace Flub.TelegramBot.Types
         [JsonPropertyName("creator")]
         public User Creator { get; set; }
         /// <summary>
+        /// <see langword="true"/>, if users joining the chat via the link need to be approved by chat administrators.
+        /// </summary>
+        [JsonPropertyName("creates_join_request")]
+        public bool? CreatesJoinRequest { get; set; }
+        /// <summary>
         /// <see langword="true"/>, if the link is primary.
         /// </summary>
         [JsonPropertyName("is_primary")]
@@ -28,6 +33,11 @@ namespace Flub.TelegramBot.Types
         /// </summary>
         [JsonPropertyName("is_revoked")]
         public bool? IsRevoked { get; set; }
+        /// <summary>
+        /// Optional. Invite link name.
+        /// </summary>
+        [JsonPropertyName("name")]
+        public string Name { get; set; }
         /// <summary>
         /// Optional. Point in time (Unix timestamp) when the link will expire or has been expired.
         /// </summary>
@@ -47,6 +57,11 @@ namespace Flub.TelegramBot.Types
         /// </summary>
         [JsonPropertyName("member_limit")]
         public int? MemberLimit { get; set; }
+        /// <summary>
+        /// Optional. Number of pending join requests created using this link.
+        /// </summary>
+        [JsonPropertyName("pending_join_request_count")]
+        public int? PendingJoinRequestCount { get; set; }
 
         public override string ToString() => $"{nameof(ChatInviteLink)}[{InviteLink}]";
     }

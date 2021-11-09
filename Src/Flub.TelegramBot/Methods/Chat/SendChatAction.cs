@@ -24,7 +24,8 @@ namespace Flub.TelegramBot.Methods
         /// Type of action to broadcast. Choose one, depending on what the user is about to receive: <see cref="ChatAction.Typing"/> for text messages,
         /// <see cref="ChatAction.UploadPhoto"/> for photos, <see cref="ChatAction.RecordVideo"/> or <see cref="ChatAction.UploadVideo"/> for videos,
         /// <see cref="ChatAction.RecordVoice"/> or <see cref="ChatAction.UploadVoice"/> for voice notes, <see cref="ChatAction.UploadDocument"/> for general files,
-        /// <see cref="ChatAction.FindLocation"/> for location data, <see cref="ChatAction.RecordVideoNote"/> or <see cref="ChatAction.UploadVideoNote"/> for video notes.
+        /// <see cref="ChatAction.ChooseSticker"/> for stickers, <see cref="ChatAction.FindLocation"/> for location data,
+        /// <see cref="ChatAction.RecordVideoNote"/> or <see cref="ChatAction.UploadVideoNote"/> for video notes.
         /// </summary>
         [Required]
         [JsonPropertyName("action")]
@@ -61,7 +62,9 @@ namespace Flub.TelegramBot.Methods
         [JsonFieldValue("record_video_note")]
         RecordVideoNote = 0x100,
         [JsonFieldValue("upload_video_note")]
-        UploadVideoNote = 0x200
+        UploadVideoNote = 0x200,
+        [JsonFieldValue("choose_sticker")]
+        ChooseSticker = 0x400
     }
 
     public static class SendChatActionExtension
@@ -80,7 +83,8 @@ namespace Flub.TelegramBot.Methods
         /// Type of action to broadcast. Choose one, depending on what the user is about to receive: <see cref="ChatAction.Typing"/> for text messages,
         /// <see cref="ChatAction.UploadPhoto"/> for photos, <see cref="ChatAction.RecordVideo"/> or <see cref="ChatAction.UploadVideo"/> for videos,
         /// <see cref="ChatAction.RecordVoice"/> or <see cref="ChatAction.UploadVoice"/> for voice notes, <see cref="ChatAction.UploadDocument"/> for general files,
-        /// <see cref="ChatAction.FindLocation"/> for location data, <see cref="ChatAction.RecordVideoNote"/> or <see cref="ChatAction.UploadVideoNote"/> for video notes.
+        /// <see cref="ChatAction.ChooseSticker"/> for stickers, <see cref="ChatAction.FindLocation"/> for location data, <see cref="ChatAction.RecordVideoNote"/>
+        /// or <see cref="ChatAction.UploadVideoNote"/> for video notes.
         /// </param>
         /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <returns>The task object representing the asynchronous operation.</returns>
@@ -105,7 +109,8 @@ namespace Flub.TelegramBot.Methods
         /// Type of action to broadcast. Choose one, depending on what the user is about to receive: <see cref="ChatAction.Typing"/> for text messages,
         /// <see cref="ChatAction.UploadPhoto"/> for photos, <see cref="ChatAction.RecordVideo"/> or <see cref="ChatAction.UploadVideo"/> for videos,
         /// <see cref="ChatAction.RecordVoice"/> or <see cref="ChatAction.UploadVoice"/> for voice notes, <see cref="ChatAction.UploadDocument"/> for general files,
-        /// <see cref="ChatAction.FindLocation"/> for location data, <see cref="ChatAction.RecordVideoNote"/> or <see cref="ChatAction.UploadVideoNote"/> for video notes.
+        /// <see cref="ChatAction.ChooseSticker"/> for stickers, <see cref="ChatAction.FindLocation"/> for location data, <see cref="ChatAction.RecordVideoNote"/>
+        /// or <see cref="ChatAction.UploadVideoNote"/> for video notes.
         /// </param>
         /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <returns>The task object representing the asynchronous operation.</returns>
